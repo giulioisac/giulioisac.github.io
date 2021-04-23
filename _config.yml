@@ -2,6 +2,6 @@
 title: giulio
 description:  some infos here
 logo: logo1.jpg
-show_downloads: true
+show_downloads: False
 google_analytics:
 theme: jekyll-theme-minimal
