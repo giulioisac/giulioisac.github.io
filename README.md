@@ -1,1 +1,1 @@
-# Directory og githubio site.
+# Directory of githubio site.
