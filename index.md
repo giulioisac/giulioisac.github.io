@@ -1,5 +1,5 @@
 PhD student in biophysics working on unsupervised learning methods to characterize the distribution of immune receptor repertoires.
-
+[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40bukotsunikki)](https://twitter.com/giulioisacchini)
 #### Publications
 * Isacchini, Spisak, Nourmohammad, Mora, Walczak, MINIMALIST: Mutual INformatIon Maximization for Amortized Likelihood Inference from Sampled Trajectories, 	arXiv:2106.01808
 * Isacchini, Nourmohammad, Mora, Walczak, Deep generative selection models of T and B cell receptor repertoires with soNNia, PNAS April 6, 2021 118 (14) e2023141118
