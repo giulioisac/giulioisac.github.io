@@ -2,7 +2,7 @@ I am PhD student at École normale supérieure Paris in theoretical biophysics w
 
 You can contact me by [email](mailto:giulioisac@gmail.com) or [twitter](https://twitter.com/giulioisacchini)
 
-[Here](./another-page.html) a list of my publications
+[Here](./another-page.md) a list of my publications
 
 #### Education
 
