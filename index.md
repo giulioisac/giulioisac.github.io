@@ -1,7 +1,8 @@
 PhD student in biophysics working on unsupervised learning methods for immune receptor repertoires.
 
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40giulioisacchini)](https://twitter.com/giulioisacchini)
-You can contact me by [email](mailto:giulioisac@gmail.com) or on [twitter](https://twitter.com/giulioisacchini)
+You can contact me by [email](mailto:giulioisac@gmail.com) or [twitter](https://twitter.com/giulioisacchini)
+
 [Here](./another-page.html) a list of my publications
 
 #### Education
