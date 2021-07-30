@@ -4,4 +4,6 @@ You can contact me by [email](mailto:giulioisac@gmail.com) or [twitter](https://
 
 [Here](./another-page.md) a list of my publications
 
+[Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/giulio-isacchini-a71662144)
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/giulioisac/)
 [CV](./cv.md)
