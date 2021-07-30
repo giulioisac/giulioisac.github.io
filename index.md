@@ -6,8 +6,6 @@ You can contact me by [email](mailto:giulioisac@gmail.com) or [twitter](https://
 
 [![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/giulio-isacchini-a71662144)
 [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/giulioisac/)
-[![Scholar](https://cdn.icon-icons.com/icons2/2108/PNG/512/google_scholar_icon_130918.png) Scholar](https://scholar.google.com/citations?user=sDEicokAAAAJ&hl=en)
-
-
+[![Scholar](https://scholar.google.com/favicon.ico) Scholar](https://scholar.google.com/citations?user=sDEicokAAAAJ&hl=en)
 [CV](./cv.md)
 
