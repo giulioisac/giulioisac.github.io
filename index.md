@@ -1,5 +1,5 @@
 I am a Postdoc at UC Berkeley in theoretical biophysics.
-I am interested in characterizing how our adaptive immune system recognises pathogens and how the evolution of bacteria and virsuses leads to immune evasion.
+I am interested in characterising how our adaptive immune system recognises pathogens and how the evolution of bacteria and viruses leads to immune evasion.
 I develop unsupervised learning methods to model immune receptor repertoires and to describe evolutionary trajectories of evolving pathogens.
 
 You can contact me by [email](mailto:giulioisac@gmail.com) or [twitter](https://twitter.com/giulioisacchini)  
