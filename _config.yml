@@ -10,3 +10,5 @@ plugins:
 menu:
   - title:             Publications
     url:               /publications
+  - title:             CV
+    url:               /cv
