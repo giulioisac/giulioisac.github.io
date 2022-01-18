@@ -7,3 +7,6 @@ google_analytics:
 remote_theme: hydecorp/hydejack@v9.1.5
 plugins:
   - jekyll-include-cache
+menu:
+  - title:             Publications
+    url:               /publications
