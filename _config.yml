@@ -13,9 +13,11 @@ author:
   name:                Giulio Isacchini
   email:               giulioisac@gmail.com
   # # Used by `jekyll-seo-tag`:
-  twitter:            giulioisac
-  github:             giulioisac
-  linkedin:           giulio-isacchini-a71662144
+  social:
+    linkedin:          giulio-isacchini-a71662144
+    github:            giulioisac
+    email:             giulioisac@gmail.com
+    twitter:            giulioisac
   
 menu:
   - title:             Publications
