@@ -1,7 +1,6 @@
 ---
 layout: default
-title: Another page
-description: CV
+title: CV
 ---
 
 ## Education
