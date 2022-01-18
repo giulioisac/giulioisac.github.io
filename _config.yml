@@ -4,4 +4,6 @@ title: Giulio Isacchini
 logo: foto_1.jpg
 show_downloads: False
 google_analytics:
-theme: jekyll-theme-hydejack
+remote_theme: hydecorp/hydejack@v9.1.5
+plugins:
+  - jekyll-include-cache
