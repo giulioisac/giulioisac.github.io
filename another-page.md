@@ -1,9 +1,3 @@
----
-layout: default
-title: Another page
-description: Publications
----
-
 ## Publications
 
 * Isacchini, Spisak, Nourmohammad, Mora, Walczak, MINIMALIST: Mutual INformatIon Maximization for Amortized Likelihood Inference from Sampled Trajectories, 	arXiv:2106.01808
