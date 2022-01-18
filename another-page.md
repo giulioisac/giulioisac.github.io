@@ -1,4 +1,10 @@
-## Publications
+---
+layout: list
+title:  Publications 
+slug:   Publications
+description: >
+  Last update 15.01.2021
+---
 
 * Isacchini, Spisak, Nourmohammad, Mora, Walczak, MINIMALIST: Mutual INformatIon Maximization for Amortized Likelihood Inference from Sampled Trajectories, 	arXiv:2106.01808
 * Isacchini, Nourmohammad, Mora, Walczak, Deep generative selection models of T and B cell receptor repertoires with soNNia, PNAS April 6, 2021 118 (14) e2023141118
