@@ -4,8 +4,9 @@ title: CV
 ---
 
 ## Education
+*2022-Now: **Postdoc in Biophysics**, at University of California, Berkeley, under the supervision of Oskar Hallatschek.
 
-* 2018–Now: **PhD in Machine learning of immune repertoire interactions**, jointly between Max Planck Institute for Dynamics and Self-Organization, Goettingen, and École Normale Superiéure, Paris. The objective of this PhD project is to use statistical learning methods combined with machine learning approaches to develop predictive models of immune repertoire response. Supervisors: Armita Nourmohammad, Thierry Mora, Aleksandra Walczak
+* 2018–2021: **PhD in Machine learning of immune repertoire interactions**, jointly between Max Planck Institute for Dynamics and Self-Organization, Goettingen, and École Normale Superiéure, Paris. The objective of this PhD project is to use statistical learning methods combined with machine learning approaches to develop predictive models of immune repertoire response. Supervisors: Armita Nourmohammad, Thierry Mora, Aleksandra Walczak
 
 * 2016–2018: **Master in High Energy Physics**, Jointly between ETH Zurich and École Polytechnique Paris. 
   * Internship at École Normale Supérieure, Paris, March-July 2018: The project aimed to contruct new models for the spiking activity of Ganglion cells in the retina through various ML techniques.
