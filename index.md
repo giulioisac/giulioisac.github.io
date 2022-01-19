@@ -2,7 +2,6 @@
 layout: welcome
 title: About
 permalink: /about/
-sidebar: true
 ---
 ## Hello, World!
 
