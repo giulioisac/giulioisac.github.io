@@ -14,11 +14,11 @@ author:
   email:               giulioisac@gmail.com
   # picture:             foto_1.png
   social:
-    linkedin:          giulio-isacchini-a71662144
     github:            giulioisac
     email:             giulioisac@gmail.com
     twitter:           giulioisac
-  
+    linkedin:          giulio-isacchini-a71662144
+    
 menu:
   - title:             Publications
     url:               /publications
