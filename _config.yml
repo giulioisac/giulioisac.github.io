@@ -12,7 +12,7 @@ author:
   # Used by `jekyll-feed`:
   name:                Giulio Isacchini
   email:               giulioisac@gmail.com
-  # # Used by `jekyll-seo-tag`:
+  picture:             foto_1.png
   social:
     linkedin:          giulio-isacchini-a71662144
     github:            giulioisac
