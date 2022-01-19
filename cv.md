@@ -4,7 +4,7 @@ title: CV
 ---
 
 ## Education
-* 2022-Now: **Postdoc in Biophysics**, at University of California, Berkeley, under the supervision of Oskar Hallatschek. The research topic is to model evolutionary trajectories of pathogens and characterize to which extent recombination events can be detected in sequenced genomes.
+* 2022-Now: **Postdoc in Biophysics**, at University of California, Berkeley, under the supervision of Oskar Hallatschek. The objective is to model evolutionary trajectories of pathogens and characterize recombination events from sequenced genomes.
 
 * 2018–2021: **PhD in Machine learning of immune repertoire interactions**, jointly between Max Planck Institute for Dynamics and Self-Organization, Goettingen, and École Normale Superiéure, Paris. The objective of this PhD project is to use statistical learning methods combined with machine learning approaches to develop predictive models of immune repertoire response. Supervisors: Armita Nourmohammad, Thierry Mora, Aleksandra Walczak
 
