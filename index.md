@@ -1,5 +1,4 @@
 ---
-layout: welcome
 title: About
 ---
 ## Hello, World!
