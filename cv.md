@@ -30,5 +30,3 @@ title: CV
 * Travel Award for conference Sensing Chemical Spaces in Princeton, USA, December 2019
 * Boulder Summer School for Condensed Matter and Materials Physics: Theoretical Biophysics, 2019
 * 3rd Winter School of Multiscale Integration in Biological Systems, Institut Curie, 2018
-
-[back](./)
