@@ -4,6 +4,7 @@ title: About
 ## Hello, World!
 
 Hi, I'm **Giulio Isacchini**, I am currently a Postdoc Researcher at UC Berkeley in theoretical biophysics.
+
 I am interested in characterising how our adaptive immune system recognises pathogens and how the evolution of bacteria and viruses leads to immune evasion.
 I develop unsupervised learning methods to model immune receptor repertoires and to describe evolutionary trajectories of evolving pathogens.
 
