@@ -24,7 +24,7 @@ menu:
     url:               /publications
   - title:             CV
     url:               /cv
-copyright:             © 2021. All rights reserved.
+#copyright:             © 2021. All rights reserved.
 google_fonts:          Noto+Sans+KR|JetBrains+Mono|Nanum+Gothic+Coding
 tagline:               >
   Postdoctoral researcher at UC Berkeley
