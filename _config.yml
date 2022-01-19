@@ -33,6 +33,8 @@ menu:
     url:               /publications
   - title:             CV
     url:               /cv
+  - title:             About
+    url:               /index
 #copyright:             © 2021. All rights reserved.
 google_fonts:          Noto+Sans+KR|JetBrains+Mono|Nanum+Gothic+Coding
 tagline:               >
