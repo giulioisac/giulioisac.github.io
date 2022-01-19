@@ -1,9 +1,6 @@
 
 title: Giulio Isacchini
-#description:  some infos here
-logo: foto_1.png
-show_downloads: False
-google_analytics:
+logo: foto_1.JPG
 remote_theme: hydecorp/hydejack@v9.1.5
 plugins:
   - jekyll-default-layout
