@@ -1,7 +1,7 @@
 ---
 layout: welcome
 title: About
-permalink: /about/
+cover: True
 ---
 ## Hello, World!
 
