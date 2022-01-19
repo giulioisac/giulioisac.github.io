@@ -1,7 +1,6 @@
 ---
 layout: welcome
 title: About
-cover: True
 ---
 ## Hello, World!
 
