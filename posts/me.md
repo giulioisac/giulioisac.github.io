@@ -8,7 +8,7 @@ This connection will suggest a suprising relationship to the most popular infere
 
 ## Unsupervised Learnig
 Unsupervised learning addresses the task of inference of a probability distribution $$P(x)$$ from a set of samples $$D = \{ x_i \}^N_{i=1}$$. 
-Given a specific parametrization of the probability distribution $$P_\theta(x)$$, parameter inference is performed 
+Given a specific parametrization of the probability distribution $$P^\theta(x)$$, parameter inference is performed 
 via maximization of the average log-likelihood
 
 $$
@@ -19,7 +19,7 @@ $$
 
 where $$\mathbb{E}_\mathcal{D}[\cdot]$$ indicates the empirical average with respect to the set $$\mathcal{D}$$.  
 
-## Principle of minimum discriminatory information
+## Principle of Minimum Discriminatory Information
 We are looking for a probability distribution $$P(x)$$ that is the most similar to a reference distribution $P_{\rm 0}$ 
 while reproducing some average observables from the data $\mathcal{D}$ (such as the mean and standard deviation of x)
 
@@ -29,8 +29,8 @@ $$
 \end{aligned}
 $$
 
-where the second term imposes normalization of the probability, the index $f$ identifies the observables 
-whose average is constrained to match the one computed on samples $\mathcal{D}$ from the $P_{\rm data}$ distribution and 
+where the second term imposes normalization of the probability, the index $$f$$ identifies the observables 
+whose average is constrained to match the one computed on samples $$\mathcal{D}$$ from the $$P_{\rm data}$$ distribution and 
 
 $$
 \begin{aligned}
@@ -41,7 +41,7 @@ $$
 is the Kullback-Leibler divergence between the two distributions. 
 The uniform distribution $$\mathcal{U}$$ is the distribution with maximal entropy. 
 When $$P_{\rm 0}\to \mathcal{U}$$ the above formulation is equivalent to the principle of maximum entropy. 
-Extremization of $\mathcal{J}$ leads to 
+Extremization of $$\mathcal{J}$$ leads to 
 
 $$
 \begin{aligned}
@@ -49,13 +49,12 @@ P^\theta(x) = \frac{1}{Z^\theta}e^{-E^\theta(x)} P_{\rm 0 }(x)
 \end{aligned}
 $$
 
-with $$E^\theta(x)=\sum_{f\in \mathcal{F}}\theta^fx_f$$ where $$x_f \in \{0,1\}$$
+with $$E^\theta(x)=\sum_{f}\theta^fg_f(x)$$ where the function $$g_f$$ defines the observables that we want to match, i.e. $$g(x)=x$$ and $$(g(x)=x^2)$$ for the first and second moments respectively.
 The partition function $$Z^\theta$$ can be estimated through importance sampling as
 
 $$
 \begin{equation}
 Z^\theta=\sum_x P_{\rm gen}(x)e^{-E^\theta(x)}\sim \mathbb{E}_\mathcal{G} [e^{-E^\theta}]
-\label{eq:partfunc}
 \end{equation}
 $$
 
