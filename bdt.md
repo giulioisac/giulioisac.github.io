@@ -15,7 +15,7 @@ A popular and powerful technique for calibration is called quantile matching (or
 which is a generic method to map one probability distribution to another by matching their quantiles. 
 For an intutitive explanation see the following figure: 
 
-<img src="https://github.com/giulioisac/giulioisac.github.io/blob/main/quantile1.jpeg" width="492" height="392">
+<img src="https://raw.githubusercontent.com/giulioisac/giulioisac.github.io/main/quantile1.jpeg" width="492" height="392">
 
 Given a specific value of our measured density $y$, we read the value of the cumulative distribution 
 function for the model (model quantile) and then substitute the value of the same quantile in the observed distribution, 
@@ -36,7 +36,7 @@ When you minimize the least squares loss $L= \langle (y-f(x))^2 \rangle$ you are
 With the L1 loss $L_1 = \langle |y-f(x)| \rangle$, you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. 
 See figure and this [post](https://towardsdatascience.com/quantile-regression-from-linear-models-to-trees-to-deep-learning-af3738b527c3):
 
-<img src="https://github.com/giulioisac/giulioisac.github.io/blob/main/quantile2.jpeg">
+<img src="https://raw.githubusercontent.com/giulioisac/giulioisac.github.io/main/quantile2.jpeg">
 
 We can fit how many quantiles of the distribution we want, one at a time. 
 An easy and powerful method to perform this fitting is boosted decision trees (BDTs). 
