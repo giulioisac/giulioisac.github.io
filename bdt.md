@@ -33,7 +33,7 @@ this procedure however breaks down. This is where quantile regression comes into
 ## Quantile regression
 
 When you minimize the least squares loss $$L_2(\theta)= \langle (y-f_\theta(x))^2 \rangle$$ you are looking for a model $$f_\theta$$ parametrized by $$\theta$$ that reproduces the mean of the distribution of y. 
-With the L1 loss $L_1 (\theta) = \langle |y-f_\theta(x)| \rangle$, you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. 
+With the L1 loss $$L_1 (\theta) = \langle |y-f_\theta(x)| \rangle$$, you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. 
 See figure and this [post](https://towardsdatascience.com/quantile-regression-from-linear-models-to-trees-to-deep-learning-af3738b527c3):
 
 <img src="https://raw.githubusercontent.com/giulioisac/giulioisac.github.io/main/quantile2.jpeg">
