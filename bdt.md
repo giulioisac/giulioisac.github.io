@@ -43,8 +43,8 @@ An easy and powerful method to perform this fitting is [boosted decision trees](
 BDTs are great: they are reliable yet flexible models that can well approximate multidimensional functions, 
 a must-have tool for any novice data scientist to approach the complexity of real-world data.
 
-In order to fit our BDTs we need however data. The experimental data is already given and we can than directly infer the quantiles $$P_e(y|x)$$.
-Even with simple models, deriving an analytical description for the quantiles of the distribution is generically intractable. 
+In order to fit our BDTs we need however data. The experimental data is already there and we can use it to infer the quantiles of $$P_e(y|x)$$.
+Deriving the quantiles of the model is a bit more complicated since, even with simple models, an analytical description for the quantiles is intractable. 
 To circumvent this problem we can generate data by performing simulation from the model (sampling from $$P_m(y|x)$$ ) and infer a BDT on this generated data.
 
 We now possess all the tools to map our model predictions to data differentiably with quantile matching:
