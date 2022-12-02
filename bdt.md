@@ -17,23 +17,23 @@ For an intutitive explanation see the following figure:
 
 <img src="https://raw.githubusercontent.com/giulioisac/giulioisac.github.io/main/quantile1.jpeg" width="492" height="392">
 
-Given a specific value of our measured density $y$, we read the value of the cumulative distribution 
+Given a specific value of our measured density $$y$$, we read the value of the cumulative distribution 
 function for the model (model quantile) and then substitute the value of the same quantile in the observed distribution, 
 then repeat this substitution for all data points.
 
-The problem becomes a bit more complicated when we introduce a dependency on a control variable $x$, i.e., the temperature in the problem above.
+The problem becomes a bit more complicated when we introduce a dependency on a control variable $$x$$, i.e., the temperature in the problem above.
 
 The output of our model (experiment)  can then be formulated via a conditional probability distribution 
-$P_m(y|x)$ ( $P_e(y|x)$ ) which depends on the temperature x. 
-We are looking for a consistent way to map $P_m(y|x)$ to $P_e(y|x)$ to match the model's prediction. 
+$$P_m(y|x)$$ ( $$P_e(y|x)$$ ) which depends on the temperature x. 
+We are looking for a consistent way to map $$P_m(y|x)$$ to $$P_e(y|x)$$ to match the model's prediction. 
 
-When both the input variable $x$ and the output variables $y$ are multidimensional, 
+When both the input variable $x$ and the output variables $$y$$ are multidimensional, 
 this procedure however breaks down. This is where quantile regression comes into play.
 
 ## Quantile regression
 
-When you minimize the least squares loss $L= \langle (y-f(x))^2 \rangle$ you are fitting the mean of the distribution of y. 
-With the L1 loss $L_1 = \langle |y-f(x)| \rangle$, you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. 
+When you minimize the least squares loss $$L_2(\theta)= \langle (y-f_\theta(x))^2 \rangle$$ you are looking for a model $$f_\theta$$ parametrized by $$\theta$$ that reproduces the mean of the distribution of y. 
+With the L1 loss $L_1 (\theta) = \langle |y-f_\theta(x)| \rangle$, you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. 
 See figure and this [post](https://towardsdatascience.com/quantile-regression-from-linear-models-to-trees-to-deep-learning-af3738b527c3):
 
 <img src="https://raw.githubusercontent.com/giulioisac/giulioisac.github.io/main/quantile2.jpeg">
