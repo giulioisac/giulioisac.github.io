@@ -83,7 +83,7 @@ hydejack:
 
   # Configure the order of complementary content on project pages
   # project_addons:      [about, newsletter, other, comments]
-  project_addons:      [about, other, comments]
+  project_addons:      [about, comments]
 
   # Set to `true` if you don't want to show an icon indicating external links
   no_mark_external:    true
