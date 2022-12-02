@@ -17,7 +17,7 @@ $$
 \end{aligned}
 $$
 
-where $$\mathbb{E}_\mathcal{D}[\cdot]$$ indicates the empirical average with respect to the set $$\mathcal{D}$$.  
+where $$\mathbb{E}_\mathcal{D}[\cdot]$$ indicates the empirical average with respect to the set $$\mathcal{D}$$. We have a method for parameter inference, we need now to find an heuristic to decide the functional form of $$P(x)$$, this is when maximum entropy and the principle of minimum discriminatory information can help us.
 
 ## Principle of Minimum Discriminatory Information
 We are looking for a probability distribution $$P(x)$$ that is the most similar to a reference distribution $$P_{\rm 0}$$
