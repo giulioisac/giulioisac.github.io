@@ -20,8 +20,8 @@ $$
 where $$\mathbb{E}_\mathcal{D}[\cdot]$$ indicates the empirical average with respect to the set $$\mathcal{D}$$.  
 
 ## Principle of Minimum Discriminatory Information
-We are looking for a probability distribution $$P(x)$$ that is the most similar to a reference distribution $P_{\rm 0}$ 
-while reproducing some average observables from the data $\mathcal{D}$ (such as the mean and standard deviation of x)
+We are looking for a probability distribution $$P(x)$$ that is the most similar to a reference distribution $$P_{\rm 0}$$
+while reproducing some average observables from the data $$\mathcal{D}$$ (such as the mean and standard deviation of x)
 
 $$
 \begin{aligned}
@@ -58,7 +58,7 @@ Z^\theta=\sum_x P_{\rm 0}(x)e^{-E^\theta(x)}\sim \mathbb{E}_\mathcal{G} [e^{-E^\
 \end{equation}
 $$
 
-with $$\mathbb{E}_\mathcal{G}[\cdot]$$ the empirical average with respect to a set $$\mathcal{G}$$ of generated samples from $P_{\rm 0}$. 
+with $$\mathbb{E}_\mathcal{G}[\cdot]$$ the empirical average with respect to a set $$\mathcal{G}$$ of generated samples from $$P_{\rm 0}$$. 
 Intuitively when $$P_{\rm 0}(x)$$ is closer to $$P(x)$$, the empirical average for $$Z^\theta$$ converges faster and the inference is more stable.
 
 
