@@ -62,7 +62,7 @@ with $$\mathbb{E}_\mathcal{G}[\cdot]$$ the empirical average with respect to a s
 Intuitively when $$P_{\rm 0}(x)$$ is closer to $$P(x)$$, the empirical average for $$Z^\theta$$ converges faster and the inference is more stable.
 
 
-# Connection to Logistic Regression
+## Connection to Logistic Regression
 Parameter inference of $$E^\theta(x)$$ is commonly difficult because the estimation of $$Z^\theta$$ is computationally intensive.
 Luckly, we can get around this problem via optimization of an alternative objective function, which shares the same maximum: the [binary cross entropy loss](https://en.wikipedia.org/wiki/Logistic_regression).
 
@@ -89,7 +89,7 @@ and recover the density ratio using the energy representation of $$d^\theta$$.
 Logistic regression (classification) is the workhorse of supervised learning. 
 It finds here an untraditional application to an unsupervised problem. 
 
-# Why do we care? The road to explainable blackboxes
+## Why do we care? The road to explainable blackboxes
 While the Maximum Entropy description allows us to minimize the amount of structure we build in the model, sometimes we want to impose additional structure. One example is the estimation of [selection pressure](https://www.pnas.org/doi/abs/10.1073/pnas.2023141118), another one is [simulation based inference ](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.105.055309). In another post we also discussed [model calibration](https://giulioisac.github.io/bdt.html). 
 
 Inference via density ratio estimation is a powerful method to develop explainable models. When $$P_0(x)$$ represents your simple model and the energy $$E^\theta(x)$$ is parametrized via a deep neural network, we can bridge the predictions of $$P_0(x)$$ to the complexity of real-world data and its varied sources of noise. 
