@@ -1,14 +1,14 @@
 # Differentiable Quantile Matching via Boosted Decision Trees
 
 The world is complicated, and for any rule, there is an exception. 
-Models can be used to make sense of the complexity of natural phenomena. 
+Models can be used to navigate the complexity of natural phenomena. 
 Understanding when a model fails is of fundamental importance, as it defines the limits of our explanatory powers 
-and it suggests paths to improve our understanding of the phenomena under consideration.
+and it suggests how to improve our understanding of the phenomena under consideration.
 
 Sometimes, however, the model is inconsistent with observations for really "boring" reasons. 
 For example, imagine an experimental apparatus that measures the density of a liquid and whose performance depends on the daily variation of the temperature in the room. 
-We are not interested in what caused these variations. We just want to correct the predictions of our model to be consistent with the observed data. 
-In this case, scientists use the term "calibration" to define a set of methods and techniques for matching the model's projections to real-world data.
+We are not interested in what caused these variations. We don't want to the develop a detailed model of this effect. We just want to correct the predictions of our original model to be consistent with the observed data. 
+In this case, scientists use the term "calibration" to define a set of methods and techniques for correcting the model's projections to match real-world data.
 
 ## Quantile Matching
 A popular and powerful technique for calibration is called quantile matching (or quantile mapping), 
