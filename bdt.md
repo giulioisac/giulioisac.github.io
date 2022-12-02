@@ -46,3 +46,9 @@ a must-have tool for any novice data scientist to approach the complexity of rea
 In order to fit our BDTs we need however data. The experimental data is already given and we can than directly infer the quantiles $$P_e(y|x)$$.
 Even with simple models, deriving an analytical description for the quantiles of the distribution is generically intractable. 
 To circumvent this problem we can generate data by performing simulation from the model (sampling from $$P_m(y|x)$$ ) and infer a BDT on this generated data.
+
+We now possess all the tools to map our model predictions to data differentiably with quantile matching:
+* infer N models $$f^\alpha_m$$ and $$f^\alpha_e$$ indexed by $$\alpha=1/N,1/(N-1),\dots,1$$ on simulated and experimental data.
+* for all j pairs of simulated data $$(x_j,y_j)_m $$ find the closest $$\tilde{\alpha}$$ such that $$f^\tilde{\alpha}_m(x_j)\sim y_j$$ and substitute the new value from the inferred experimental distribution $$\tilde{y}_j=f^\tilde{\alpha}_e(x_j)$$
+
+And you are done!
