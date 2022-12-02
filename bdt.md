@@ -51,4 +51,4 @@ We now possess all the tools to map our model predictions to data differentiably
 * infer N models $$f^\alpha_m$$ and $$f^\alpha_e$$ indexed by $$\alpha=1/N,1/(N-1),\dots,1$$ on simulated and experimental data.
 * for all j pairs of simulated data $$(x_j,y_j)_m $$ find the closest $$\tilde{\alpha}$$ such that $$f^\tilde{\alpha}_m(x_j)\sim y_j$$ and substitute the new value from the inferred experimental distribution $$\tilde{y}_j=f^\tilde{\alpha}_e(x_j)$$
 
-And you are done: the resulting set $\{(x_j,\tilde{y}_j)\}_m$$ should match your experimental data. 
+And you are done: the resulting set $$\{(x_j,\tilde{y}_j)\}_m$$ should match your experimental data. 
