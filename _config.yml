@@ -26,8 +26,8 @@ author:
     email:             giulioisac@gmail.com
     twitter:           giulioisacchini
 #    linkedin:          giulio-isacchini-a71662144
-accent_image:          background2.jpg
-accent_color:          rgb(79,177,186)    
+#accent_image:          background2.jpg
+accent_color:          rgb(31,33,36)    
 menu:
   - title:             About
     url:               /index
