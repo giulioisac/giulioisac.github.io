@@ -39,7 +39,7 @@ See figure and this [post](https://towardsdatascience.com/quantile-regression-fr
 <img src="https://raw.githubusercontent.com/giulioisac/giulioisac.github.io/main/quantile2.jpeg">
 
 We can fit how many quantiles of the distribution we want, one at a time. 
-An easy and powerful method to perform this fitting is boosted decision trees (BDTs). 
+An easy and powerful method to perform this fitting is [boosted decision trees](https://xgboost.readthedocs.io/en/stable/tutorials/model.html) (BDTs). 
 BDTs are great: they are reliable yet flexible models that can well approximate multidimensional functions, 
 a must-have tool for any novice data scientist to approach the complexity of real-world data.
 
