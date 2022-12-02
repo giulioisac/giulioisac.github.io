@@ -59,7 +59,7 @@ Z^\theta=\sum_x P_{\rm 0}(x)e^{-E^\theta(x)}\sim \mathbb{E}_\mathcal{G} [e^{-E^\
 $$
 
 with $$\mathbb{E}_\mathcal{G}[\cdot]$$ the empirical average with respect to a set $$\mathcal{G}$$ of generated samples from $P_{\rm 0}$. 
-Intuitively when $P_{\rm 0}(x)$ is closer to $P(x)$, the empirical average for $$Z^\theta$$ converges faster and the inference is more stable.
+Intuitively when $$P_{\rm 0}(x)$$ is closer to $$P(x)$$, the empirical average for $$Z^\theta$$ converges faster and the inference is more stable.
 
 
 # Connection to Logistic Regression
@@ -68,7 +68,7 @@ Luckly, we can get around this problem via optimization of an alternative object
 
 In the [Noise Contrastive Estimation](https://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf) framework, which developed within the field of Natural Language Processing, 
 the density ratio between two distributions $$P(x)/P_{\rm 0}(x)$$ is inferred using a logistic classifier. 
-A classifier between the two hypothesis of $x$ originating from $$P(x)$$ or $$P_{\rm 0}$$ in a mixture $$P_{\rm mix}(x)=\frac{1}{2}(P(x)+ P_{\rm 0}(x))$$  
+A classifier between the two hypothesis of $$x$$ originating from $$P(x)$$ or $$P_{\rm 0}$$ in a mixture $$P_{\rm mix}(x)=\frac{1}{2}(P(x)+ P_{\rm 0}(x))$$  
 follows:
 
 $$
