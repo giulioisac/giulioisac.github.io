@@ -54,11 +54,11 @@ The partition function $$Z^\theta$$ can be estimated through importance sampling
 
 $$
 \begin{equation}
-Z^\theta=\sum_x P_{\rm gen}(x)e^{-E^\theta(x)}\sim \mathbb{E}_\mathcal{G} [e^{-E^\theta}]
+Z^\theta=\sum_x P_{\rm 0}(x)e^{-E^\theta(x)}\sim \mathbb{E}_\mathcal{G} [e^{-E^\theta}]
 \end{equation}
 $$
 
-with $$\mathbb{E}_\mathcal{G}[\cdot]$$ the empirical average with respect to a set $$\mathcal{G}$$ of samples from $P_{\rm 0}$. 
+with $$\mathbb{E}_\mathcal{G}[\cdot]$$ the empirical average with respect to a set $$\mathcal{G}$$ of generated samples from $P_{\rm 0}$. 
 Intuitively when $P_{\rm 0}(x)$ is closer to $P(x)$, the empirical average for $$Z^\theta$$ converges faster and the inference is more stable.
 
 
