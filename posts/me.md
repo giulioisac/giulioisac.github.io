@@ -64,7 +64,7 @@ Intuitively when $$P_{\rm 0}(x)$$ is closer to $$P(x)$$, the empirical average f
 
 # Connection to Logistic Regression
 Parameter inference of $$E^\theta(x)$$ is commonly difficult because the estimation of $$Z^\theta$$ is computationally intensive.
-Luckly, we can get around this problem via optimization of an alternative objective function, which shares the same maximum: the binary cross entropy loss.
+Luckly, we can get around this problem via optimization of an alternative objective function, which shares the same maximum: the [binary cross entropy loss](https://en.wikipedia.org/wiki/Logistic_regression).
 
 In the [Noise Contrastive Estimation](https://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf) framework, which developed within the field of Natural Language Processing, 
 the density ratio between two distributions $$P(x)/P_{\rm 0}(x)$$ is inferred using a logistic classifier. 
