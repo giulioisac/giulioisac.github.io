@@ -1,4 +1,4 @@
-# Maximum entropy, principle of minimum discriminatory information and logistic regression
+# Maximum Entropy, Contrastive Learning and Logistic Regression
 
 The [principle of maximum entropy](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy), first introduced by Jaynes in the 60' 
 and inspired by similarities between information theory and statistical mechanics, 
@@ -6,7 +6,7 @@ is a powerful and popular method for modeling real-world data with minimal assum
 In this post I will discuss its connection to unsupervised learning and density ratio estimation. 
 This connection will suggest a suprising relationship to the most popular inference scheme for supervised learning: logistic regression.
 
-## Unsupervised Learnig
+## Unsupervised Learning
 Unsupervised learning addresses the task of inference of a probability distribution $$P(x)$$ from a set of samples $$D = \{ x_i \}^N_{i=1}$$. 
 Given a specific parametrization of the probability distribution $$P^\theta(x)$$, parameter inference is performed 
 via maximization of the average log-likelihood
