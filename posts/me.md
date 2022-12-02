@@ -63,10 +63,10 @@ Intuitively when $P_{\rm 0}(x)$ is closer to $P(x)$, the empirical average for $
 
 
 # Connection to Logistic Regression
-Parameter inference of the energy function $$E^\theta(x)$$ is commonly difficult because $$Z^\theta$$ is computationally intensive to estimate.
+Parameter inference of $$E^\theta(x)$$ is commonly difficult because the estimation of $$Z^\theta$$ is computationally intensive.
 Luckly, we can get around this problem via optimization of an alternative objective function, which shares the same maximum: the binary cross entropy loss.
 
-In the Noise Contrastive Estimation framework, which developed within the field of Natural Language Processing, 
+In the [Noise Contrastive Estimation](https://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf) framework, which developed within the field of Natural Language Processing, 
 the density ratio between two distributions $$P(x)/P_{\rm 0}(x)$$ is inferred using a logistic classifier. 
 A classifier between the two hypothesis of $x$ originating from $$P(x)$$ or $$P_{\rm 0}$$ in a mixture $$P_{\rm mix}(x)=\frac{1}{2}(P(x)+ P_{\rm 0}(x))$$  
 follows:
