@@ -6,6 +6,28 @@ slug:   Publications
 
 See also my [Google Scholar profile](https://scholar.google.com/citations?user=sDEicokAAAAJ&hl=en).
 
+## 2026
+
+* Rawat, Shapiro, Peters, Widrich, Mayer-Blackwell, Motwani, Pavlović, Al Hajj, Posgai, Kanduri, **Isacchini**, Chernigovskaya, Scheffer, Motwani, Balzano-Nogueira, Pettenger-Willey, Valkiers, Jacobsen, Haller, Schatz, Wasserfall, Emerson, Fiore-Gartland, Atkinson, Klambauer, Sandve, Greiff, Brusko.
+  [Identification of a type 1 diabetes-associated T cell receptor repertoire signature from the human peripheral blood](https://doi.org/10.1126/sciadv.adx7448).
+  *Science Advances* **12**, eadx7448.
+
+## 2025
+
+* Okada, **Isacchini**, Yu, Hallatschek.
+  [Uncovering heterogeneous intercommunity disease transmission from neutral allele frequency time series](https://doi.org/10.1073/pnas.2500663122).
+  *PNAS* **122**, e2500663122.
+
+## 2024
+
+* O'Donnell, Kanduri, **Isacchini**, Limenitakis, Brachman, Alvarez, Haff, Sandve, Greiff.
+  [Reading the repertoire: progress in adaptive immune receptor analysis using machine learning](https://doi.org/10.1016/j.cels.2024.11.006).
+  *Cell Systems* **15**, 1168–1189.
+
+* **Isacchini**, Quiniou, Barennes, Mhanna, Vantomme, Stys, Mariotti-Ferrandiz, Klatzmann, Walczak, Mora, Nourmohammad.
+  [Local and global variability in developing human T-cell repertoires](https://doi.org/10.1103/PRXLife.2.013011).
+  *PRX Life* **2**, 013011.
+
 ## 2022
 
 * **Isacchini**, Spisak, Nourmohammad, Mora, Walczak.
