@@ -1,17 +1,51 @@
 ---
 layout: list
-title:  Publications 
+title:  Publications
 slug:   Publications
 ---
 
-See also my [Scholar](https://scholar.google.com/citations?user=sDEicokAAAAJ&hl=en).
+See also my [Google Scholar profile](https://scholar.google.com/citations?user=sDEicokAAAAJ&hl=en).
 
-* **Isacchini**, Spisak, Nourmohammad, Mora, Walczak, MINIMALIST: Mutual INformatIon Maximization for Amortized Likelihood Inference from Sampled Trajectories, 	Phys. Rev. E 105, 055309
-* **Isacchini**, Nourmohammad, Mora, Walczak, Deep generative selection models of T and B cell receptor repertoires with soNNia, PNAS April 6, 2021 118 (14) e2023141118
-* **Isacchini**, Sethna, Elhanati, Nourmohammad, Walczak, Mora, Generative models of T-cell receptor sequences, Physical Review E 101 (6), 062414
-* **Isacchini**, Olivares, Nourmohammad, Walczak, Mora, SOS: Online probability estimation and generation of T and B cell receptors, Bioinformatics, btaa574
-* Sethna, **Isacchini**, Dupic, Mora, Walczak, Elhanati, Population variability in the generation and thymic selection of T-cell repertoires, PLoS Comput Biol 16(12):e1008394
-* Mahuas, **Isacchini**, Marre, Ferrari, Mora, A new inference approach for training shallow and deep generalized linear models of noisy interacting neurons, NeurIPS 2020
-* Montague, Lv, Otwinowski, DeWitt, **Isacchini**, K Yip, W Ng, Tsang, Yuan, Liu, Wilson, Peiris, C Wu, Nour- mohammad, Pun Mok, Dynamics of B-cell repertoires and emergence of cross-reactive responses in COVID-19 patients with different disease severity, Cell Reports 35 (8), 109173
-* Moosavi, **Isacchini**, A Markovian Model of the Evolving World Input-Output Network, PLOS ONE, 2017
-* Adam-Bourdarios, Bianchi, Cameron, Filipcic, **Isacchini**, Lancon and Wu for the ATLAS Collaboration, Volun- teer Computing Experience with ATLAS@Home, Journal of Physics: Conference Series, Volume 898, Track 3: Distributed Computing, iopscience
+## 2022
+
+* **Isacchini**, Spisak, Nourmohammad, Mora, Walczak.
+  [Mutual information maximization for amortized likelihood inference from sampled trajectories: MINIMALIST](https://doi.org/10.1103/PhysRevE.105.055309).
+  *Physical Review E* **105**, 055309.
+
+## 2021
+
+* **Isacchini**, Walczak, Mora, Nourmohammad.
+  [Deep generative selection models of T and B cell receptor repertoires with soNNia](https://doi.org/10.1073/pnas.2023141118).
+  *PNAS* **118** (14), e2023141118.
+
+* Montague, Lv, Otwinowski, DeWitt, **Isacchini**, Yip, Ng, Tsang, Yuan, Liu, Wilson, Peiris, Wu, Nourmohammad, Mok.
+  [Dynamics of B cell repertoires and emergence of cross-reactive responses in patients with different severities of COVID-19](https://doi.org/10.1016/j.celrep.2021.109173).
+  *Cell Reports* **35** (8), 109173.
+
+## 2020
+
+* **Isacchini**, Sethna, Elhanati, Nourmohammad, Walczak, Mora.
+  [Generative models of T-cell receptor sequences](https://doi.org/10.1103/PhysRevE.101.062414).
+  *Physical Review E* **101** (6), 062414.
+
+* **Isacchini**, Olivares, Nourmohammad, Walczak, Mora.
+  [SOS: online probability estimation and generation of T- and B-cell receptors](https://doi.org/10.1093/bioinformatics/btaa574).
+  *Bioinformatics*, btaa574.
+
+* Sethna, **Isacchini**, Dupic, Mora, Walczak, Elhanati.
+  [Population variability in the generation and selection of T-cell repertoires](https://doi.org/10.1371/journal.pcbi.1008394).
+  *PLOS Computational Biology* **16** (12), e1008394.
+
+* Mahuas, **Isacchini**, Marre, Ferrari, Mora.
+  [A new inference approach for training shallow and deep generalized linear models of noisy interacting neurons](https://proceedings.neurips.cc/paper_files/paper/2020/hash/356dc40642abeb3a437e7e06f178701c-Abstract.html).
+  *NeurIPS 2020*.
+
+## 2017
+
+* Moosavi, **Isacchini**.
+  [A Markovian model of evolving world input-output network](https://doi.org/10.1371/journal.pone.0186746).
+  *PLOS ONE* **12** (10), e0186746.
+
+* Adam-Bourdarios, Bianchi, Cameron, Filipčič, **Isacchini**, Lançon, Wu, for the ATLAS Collaboration.
+  [Volunteer Computing Experience with ATLAS@Home](https://doi.org/10.1088/1742-6596/898/5/052009).
+  *Journal of Physics: Conference Series* **898**, 052009.
