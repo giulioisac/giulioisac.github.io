@@ -20,12 +20,12 @@ author:
   # Used by `jekyll-feed`:
   name:                Giulio Isacchini
   email:               giulioisac@gmail.com
-  # picture:             foto_1.png
   social:
     github:            giulioisac
     email:             giulioisac@gmail.com
     twitter:           giulioisacchini
-#    linkedin:          giulio-isacchini-a71662144
+    scholar:           "https://scholar.google.com/citations?user=sDEicokAAAAJ&hl=en"
+    linkedin:          "https://www.linkedin.com/in/giulio-isacchini-a71662144/"
 accent_image:          background1.png
 accent_color:          rgb(31,33,36)    
 menu:

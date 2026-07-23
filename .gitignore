@@ -1,0 +1,10 @@
+.DS_Store
+._*
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+Gemfile.lock
+
+# Local scratch files, not for publication
+*LinkedIn.html
