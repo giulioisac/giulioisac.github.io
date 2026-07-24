@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Differentiable Quantile Matching via Boosted Decision Trees — Giulio Isacchini</title>
+  <meta name="description" content="Calibrating model predictions to data by matching quantiles with boosted decision trees, extended to the multidimensional case.">
+  <link rel="icon" href="IMG_5210-circle.001.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+<div class="frame">
+
+  <header class="topbar">
+    <a class="brand" href="index.html">Giulio Isacchini</a>
+    <nav>
+      <a href="index.html#writing">Writing</a>
+      <button class="toggle" id="themeToggle" aria-label="Toggle color theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <article class="article">
+    <a class="back" href="index.html#writing">← Writing</a>
+    <h1>Differentiable Quantile Matching via Boosted Decision Trees</h1>
+    <div class="byline">Giulio Isacchini · Notes / Calibration</div>
+
+    <div class="prose">
+      <p>The world is complicated, and for any rule, there is an exception. Models can be used to navigate the complexity of natural phenomena. Understanding when a model fails is of fundamental importance, as it defines the limits of our explanatory powers and it suggests how to improve our understanding of the phenomena under consideration.</p>
+      <p>Sometimes, however, the model is inconsistent with observations for really "boring" reasons. For example, imagine an experimental apparatus that measures the density of a liquid and whose performance depends on the daily variation of the temperature in the room. We are not interested in what caused these variations. We don't want to develop a detailed model of this effect. We just want to correct the predictions of our original model to be consistent with the observed data. In this case, scientists use the term "calibration" to define a set of methods and techniques for correcting the model's projections to match real-world data.</p>
+
+      <h2>Quantile Matching</h2>
+      <p>A popular and powerful technique for calibration is called quantile matching (or quantile mapping), which is a generic method to map one probability distribution to another by matching their quantiles. For an intuitive explanation see the following figure:</p>
+      <img src="quantile1.jpeg" alt="Quantile matching illustration" width="492" height="392">
+      <p>Given a specific value of our measured density \(y\), we read the value of the cumulative distribution function for the model (model quantile) and then substitute the value of the same quantile in the observed distribution, then repeat this substitution for all data points.</p>
+      <p>The problem becomes a bit more complicated when we introduce a dependency on a control variable \(x\), i.e., the temperature in the problem above.</p>
+      <p>The output of our model (experiment) can then be formulated via a conditional probability distribution \(P_m(y|x)\) (\(P_e(y|x)\)) which depends on the temperature \(x\). We are looking for a consistent way to map \(P_m(y|x)\) to \(P_e(y|x)\) to match the model's prediction.</p>
+      <p>When both the input variable \(x\) and the output variables \(y\) are multidimensional, this procedure however breaks down. This is where quantile regression comes into play.</p>
+
+      <h2>Quantile Regression</h2>
+      <p>When you minimize the least squares loss \(L_2(\theta)= \langle (y-f_\theta(x))^2 \rangle\) you are looking for a model \(f_\theta\) parametrized by \(\theta\) that reproduces the mean of the distribution of \(y\). With the L1 loss \(L_1 (\theta) = \langle |y-f_\theta(x)| \rangle\), you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. See figure and this <a href="https://towardsdatascience.com/quantile-regression-from-linear-models-to-trees-to-deep-learning-af3738b527c3" target="_blank" rel="noopener">post</a>:</p>
+      <img src="quantile2.jpeg" alt="Quantile regression loss illustration">
+      <p>We can fit as many quantiles of the distribution as we want, one at a time. An easy and powerful method to perform this fitting is <a href="https://xgboost.readthedocs.io/en/stable/tutorials/model.html" target="_blank" rel="noopener">boosted decision trees</a> (BDTs). BDTs are great: they are reliable yet flexible models that can well approximate multidimensional functions, a must-have tool for any novice data scientist to approach the complexity of real-world data.</p>
+      <p>In order to fit our BDTs we need however data. The experimental data is already there and we can use it to infer the quantiles of \(P_e(y|x)\). Deriving the quantiles of the model is a bit more complicated since, even with simple models, an analytical description for the quantiles is intractable. To circumvent this problem we can generate data by performing simulation from the model (sampling from \(P_m(y|x)\)) and infer a BDT on this generated data.</p>
+      <p>We now possess all the tools to map our model predictions to data differentiably with quantile matching:</p>
+      <ul>
+        <li>infer \(N\) models \(f^\alpha_m\) and \(f^\alpha_e\) indexed by \(\alpha=1/N,1/(N-1),\dots,1\) on simulated and experimental data.</li>
+        <li>for all \(j\) pairs of simulated data \((x_j,y_j)_m\) find the closest \(\tilde{\alpha}\) such that \(f^{\tilde{\alpha}}_m(x_j)\sim y_j\) and substitute the new value from the inferred experimental distribution \(\tilde{y}_j=f^{\tilde{\alpha}}_e(x_j)\)</li>
+      </ul>
+      <p>And you are done: the resulting set \(\{(x_j,\tilde{y}_j)\}_m\) should match your experimental data.</p>
+    </div>
+  </article>
+
+  <footer class="foot">
+    <span>© 2026 Giulio Isacchini</span>
+    <span><a href="index.html">Home</a></span>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('themeToggle').addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>
