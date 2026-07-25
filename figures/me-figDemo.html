@@ -5,8 +5,8 @@
     <span class="fig-read" id="demoRead"></span>
   </div>
   <div class="fig-controls">
-    <label>noise &mu;<sub>0</sub> <input type="range" id="demoMu" min="-3" max="3" step="0.1" value="0"> <span class="val" id="demoMuV">0.0</span></label>
-    <label>noise &sigma;<sub>0</sub> <input type="range" id="demoSg" min="0.6" max="3" step="0.05" value="1.8"> <span class="val" id="demoSgV">1.80</span></label>
+    <label>noise &mu;<sub>1</sub> <input type="range" id="demoMu" min="-3" max="3" step="0.1" value="0"> <span class="val" id="demoMuV">0.0</span></label>
+    <label>noise &sigma;<sub>1</sub> <input type="range" id="demoSg" min="0.6" max="3" step="0.05" value="1.8"> <span class="val" id="demoSgV">1.80</span></label>
     <button type="button" id="demoResample">Resample</button>
     <span id="demoFit">step 0</span>
   </div>
@@ -14,11 +14,11 @@
     <svg id="demoSvg" viewBox="0 0 704 238" role="img" tabindex="0" aria-label="Live noise contrastive estimation demo: density curves of the noise distribution, the unknown target distribution, and the model recovered by a logistic classifier, redrawn as gradient descent converges. Rug marks along the baseline show the data and noise samples. Arrow keys move a crosshair that reads out density values."></svg>
   </div>
   <div class="fig-legend">
-    <span class="key"><span class="sw dash"></span>target P(x), unknown</span>
-    <span class="key"><span class="sw ref"></span>noise P<sub>0</sub>(x)</span>
-    <span class="key"><span class="sw acc"></span>recovered e<sup>&minus;E(x)</sup>P<sub>0</sub>(x)/Z</span>
+    <span class="key"><span class="sw dash"></span>target P<sub>2</sub>(x), unknown</span>
+    <span class="key"><span class="sw ref"></span>noise P<sub>1</sub>(x)</span>
+    <span class="key"><span class="sw acc"></span>recovered e<sup>&minus;E(x)</sup>P<sub>1</sub>(x)/Z</span>
     <span class="key"><span class="sw tick acc"></span>data samples</span>
     <span class="key"><span class="sw tick ref"></span>noise samples</span>
   </div>
-  <div class="fig-note">Logistic regression on 400 data and 400 noise samples over nine basis functions. ESS is the effective sample size of the importance-sampling estimate of Z: (&Sigma;w)&sup2;/&Sigma;w&sup2; with w = e<sup>&minus;E</sup> on the noise samples. As P<sub>0</sub> drifts away from P, a few noise samples carry all the weight, ESS collapses, and the recovered density degrades.</div>
+  <div class="fig-note">Logistic regression on 400 data and 400 noise samples over nine basis functions. ESS is the effective sample size of the importance-sampling estimate of Z: (&Sigma;w)&sup2;/&Sigma;w&sup2; with w = e<sup>&minus;E</sup> on the noise samples. As P<sub>1</sub> drifts away from P<sub>2</sub>, a few noise samples carry all the weight, ESS collapses, and the recovered density degrades.</div>
 </figure>
