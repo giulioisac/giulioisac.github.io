@@ -9,9 +9,9 @@ unlisted: true
 script: assets/gene-flow.js
 ---
 
-During the Delta wave, genomic surveillance in England was producing tens of thousands of SARS-CoV-2 genomes a week, tagged by region. Take any common mutation and follow its frequency in two of those regions: while travel between them is suppressed the two frequencies wander apart, and once travel resumes they converge again. Nobody recorded the journeys that caused the convergence, yet their imprint was left for us to read. In this post I will discuss what that relaxation is, why neutrality is exactly the property that makes it readable, and how the same equation applies to ancient human genomes sampled centuries apart.
+During the Delta wave, genomic surveillance in England was producing tens of thousands of SARS-CoV-2 genomes a week. Take any common mutation and follow its frequency in two regions: while travel between them is suppressed the two frequencies wander apart, and once travel resumes they converge again. Nobody recorded the journeys that caused the convergence, yet their imprint was left for us to read.
 
-The mutations being tracked here are the ones that do not matter. A neutral allele is neither favored nor purged, so the only thing that moves its frequency in a region is the arrival and departure of the hosts carrying it. That is what makes it readable. 
+Whether that imprint is there at all depends on which mutations we choose to follow, and the ones tracked here are the ones that do not matter. A neutral allele is neither favored nor purged, so the only thing that moves its frequency in a region is the arrival and departure of the hosts carrying it. That is what makes it readable. Selected mutations have instead their own additional source of change: their frequencies move in a closed population as well, and once a rise can be produced from within there is no way to tell it from a rise produced by arrivals. What follows is the single linear equation that turns this convergence into an estimate of who moved where, and its application to two datasets with almost nothing in common beyond that neutrality: weekly SARS-CoV-2 genomes across regions, and ancient human genomes sampled centuries apart.
 
 ## A Metapopulation of Neutral Alleles
 
@@ -19,9 +19,9 @@ We consider a population divided into \(n\) subpopulations (regions, districts, 
 
 \[ X_i(t+\Delta t) = \sum_{j=1}^n A_{ij}\, X_j(t) + \eta_i \]
 
-where \(A\) is a right-stochastic matrix, its elements non-negative and summing to one within each row, and \(\eta_i\) is genetic drift, about which we need to know nothing at all except that its expectation vanishes. The deterministic term is linear because under neutrality the frequency of any union of lineages must obey the same evolution equation, and because the conditional expectation of a neutral frequency is extensive: starting with half as many mutants is expected to lead to half as many mutants later. The coefficient \(A_{ij}\) is the proportion of individuals in population \(i\) that originated from population \(j\) during the interval, the fraction of \(i\) replaced by migrants from \(j\). Read epidemiologically it is the proportion of infections that \(i\) imports from \(j\), which is why the COVID work calls \(A\) the importation-rate matrix and the ancient DNA work the backward-migration matrix.
+where \(A\) is a right-stochastic matrix, its elements non-negative and summing to one within each row, and \(\eta_i\) is genetic drift, about which we need to know nothing at all except that its expectation vanishes. The deterministic term is linear because under neutrality the frequency of any union of lineages must obey the same evolution equation, and because the conditional expectation of a neutral frequency is extensive: starting with half as many mutants is expected to lead to half as many mutants later. The coefficient \(A_{ij}\) is the proportion of individuals in population \(i\) that originated from population \(j\) during the interval, the fraction of \(i\) replaced by migrants from \(j\). Read epidemiologically it is the proportion of infections that \(i\) imports from \(j\), which is why the COVID work{{cite: okada2025}} calls \(A\) the importation-rate matrix and the ancient DNA work{{cite: isacchini2026}} the migration matrix.
 
-That name points at an equally important dual interpretation, the one that appears when we start from a sampled genome and follow its lineage of ancestors backward in time. The rows of \(A\) are probability distributions, and \(A_{ij}\) is the probability that the lineage jumps from \(i\) to \(j\) as time is run backward across the interval. One set of numbers describes both the migration and the genealogy.
+The same matrix can be read in the opposite direction of time, and that reading is worth having. Take a genome sampled in population \(i\) and follow its lineage of ancestors into the past. Each row of \(A\) sums to one over non-negative entries, which makes it a probability distribution over source populations, so \(A_{ij}\) is the probability that the lineage sat in \(j\) one interval earlier and \(A_{ii}\) the probability that it stayed put. Forward in time \(A\) is a table of migrant proportions; backward in time it is the transition matrix of a Markov chain on demes, and a genealogy is one walk of that chain.
 
 If we subtract \(X_i(t)\) from both sides, the mechanism is in plain view:
 
@@ -29,15 +29,11 @@ If we subtract \(X_i(t)\) from both sides, the mechanism is in plain view:
 
 where the bracket shows that \(j\) influences \(i\) only when the two frequencies differ, and that a larger \(A_{ij}\) makes \(X_i\) converge on \(X_j\) faster. Migration is a spring and drift is the noise that keeps it from ever settling.
 
-Figure 1 runs this in the browser for two demes. Genetic distance is measured by the \(F_2\) statistic \(F_{AB}=\langle (X_A-X_B)^2\rangle\), averaged over loci, together with its time-lagged extension \(F'_{AB}=\langle (X_A(t+\ell)-X_B(t))^2\rangle\), which compares one population to the other as it was some generations earlier. Symmetric migration pulls all three curves down together. Turn on flow in one direction only and the two lagged statistics separate, because only the receiving population has moved toward where the donor used to be.
-
-{{figure: gene-flow-figRelax}}
-
 ## Two Impossible Datasets
 
 The model is the easy part. What separates one application from the next is which statistic of the data survives the noise, and the two datasets we are comparing fail in opposite directions.
 
-SARS-CoV-2 surveillance is dense in time and thin in loci. England was sequenced weekly across nine regions, so \(\Delta t\) is one week and there are dozens of consecutive time points, but a 30-kilobase genome under a strong clonal background offers only a few tens of approximately independent segregating alleles. Ancient DNA is the mirror image. The Allen Ancient DNA Resource genotypes individuals at up to 1.23 million positions, which is an enormous number of loci, and delivers them as a handful of skeletons per 300-year window, pseudohaploid, with the great majority of positions missing in any one sample and the dates themselves uncertain by centuries.
+SARS-CoV-2 surveillance is dense in time and thin in loci. England was sequenced weekly across nine regions, so \(\Delta t\) is one week and there are dozens of consecutive time points, but a 30-kilobase genome under a strong clonal background offers only a few tens of approximately independent segregating alleles. Ancient DNA is the mirror image. The Allen Ancient DNA Resource{{cite: mallick2024}} genotypes individuals at up to 1.23 million positions, which is an enormous number of loci, and delivers them as a handful of skeletons per 300-year window, pseudohaploid, with the great majority of positions missing in any one sample and the dates themselves uncertain by centuries.
 
 ## Frequencies We Can Trust
 
@@ -47,15 +43,23 @@ With frequencies in hand the estimator writes itself. Minimizing the squared dif
 
 where \(\mu\) labels the independent loci and the minimization runs subject to \(A_{ij}\ge 0\) and \(\sum_j A_{ij}=1\). Summing over a window of time points regularizes the fit and sets the resolution at which \(A\) is allowed to vary.
 
-This estimator wants the true frequencies and we only ever see a sample of them, which turns out to bias it in a specific and awkward direction. Noise in the predictors of a regression attenuates its coefficients, and the simplex constraint forbids them from shrinking toward zero, so they spread out instead: averaging \(n\) noisy predictors is a better bet than trusting any one of them, and the fit slides toward the uniform matrix \(A_{ij}=1/n\). Sampling noise reads as mixing. The small long-range couplings, which are the whole reason for building the method, come out systematically too large.
+The estimator wants the true frequencies and we only ever see a noisy sample of them. The remedy in the COVID work is to stop treating what we measured as the state of the system. A hidden Markov model keeps the true frequencies as hidden states and gives genetic drift and sampling their own noise terms, with drift variance set by an effective population size and sampling variance set by the number of sequences and a per-region overdispersion. Gaussian noise makes the model a Kalman filter with an analytic likelihood, and the parameters follow from MCMC or, more cheaply, from expectation-maximization. Figure 2 shows the structure of this model.
 
-The remedy in the COVID work is to stop treating what we measured as the state of the system. A hidden Markov model keeps the true frequencies as hidden states and gives genetic drift and sampling their own noise terms, with drift variance set by an effective population size and sampling variance set by the number of sequences and a per-region overdispersion. Gaussian noise makes the model a Kalman filter with an analytic likelihood, and the parameters follow from MCMC or, more cheaply, from expectation-maximization. The estimator stops confusing noise with mixing because it now has a parameter for the noise.
+{{figure: gene-flow-figKalman}}
 
 ## Distances We Can Trust
 
-None of that survives contact with ancient DNA. Five genomes in a 300-year bin do not determine a frequency, the noise at that depth is not remotely Gaussian, and each sample covers a different subset of sites. We give up on individual frequencies instead, and write the dynamics directly in terms of quantities that many loci can estimate together, which is what the \(F_2\) statistics are.
+None of that survives contact with ancient DNA. A few genomes in a 300-year bin do not determine a frequency, the noise at that depth is not remotely Gaussian, and each sample covers a different subset of sites. We give up on individual frequencies instead, and write the dynamics directly in terms of quantities that many loci can estimate together.
 
-Write \(F_{ik}=\langle (X_i-X_k)^2\rangle\) for the ordinary \(F_2\) distance and \(F'_{ik}=\langle (X'_i-X_k)^2\rangle\) for its lagged version, where the prime denotes time \(t+\Delta t\) and the brackets average over all sites in the genome. We start from an identity that costs nothing:
+The \(F_2\) statistic{{cite: patterson2012}} is the simplest of them: the squared difference in allele frequency between two populations, averaged over the whole genome. No single site is measurable at this sample size, but the average over a million of them is, and because sites enter that average independently, samples covering different subsets of positions still combine into one number. Under neutrality its expectation grows with the drift that separates two populations, which is why the field reads it as a genetic distance and builds admixture graphs out of it.
+
+Write \(F_{ik}=\langle (X_i-X_k)^2\rangle\) for that distance and \(F'_{ik}=\langle (X'_i-X_k)^2\rangle\) for its lagged version, where the prime denotes time \(t+\Delta t\) and the brackets are the average over sites. The lag is the addition here, and it is what tells a donor from a recipient.
+
+Figure 1 runs both statistics in the browser for two demes. The top panel is the relaxation of the model itself, neutral frequencies in \(A\) and \(B\) pulled together by migration, and the bottom panel is the distance between them with its two lagged versions. Symmetric migration pulls all three curves down together. Turn on flow in one direction only and the two lagged statistics separate, because only the receiving population has moved toward where the donor used to be.
+
+{{figure: gene-flow-figRelax}}
+
+We start from an identity that costs nothing:
 
 \[ X'_i - X_k = (X'_i - X_i) + (X_i - X_k) \]
 
@@ -69,7 +73,7 @@ where \(F'_{ii}\) is the mean squared displacement of population \(i\) over the 
 
 where every quantity on both sides is a measurable genetic distance and the dependence on \(A\) is still linear. Genetic drift has vanished. Its variance lives in \(F'_{ii}\), which enters \(F'_{ik}\) identically and cancels in the difference of the two lagged statistics.
 
-Figure 2 is the same statement drawn as a triangle. The displacement of population \(i\) over one interval decomposes into a pull toward the other populations and a random kick, and only the pull is correlated with the direction of \(k\). Subtracting \(F'_{ii}\) discards the squared length of the displacement, drift included, and keeps its projection.
+Figure 3 is the same statement drawn as a triangle. The displacement of population \(i\) over one interval decomposes into a pull toward the other populations and a random kick, and only the pull is correlated with the direction of \(k\). Subtracting \(F'_{ii}\) discards the squared length of the displacement, drift included, and keeps its projection.
 
 {{figure: gene-flow-figTriangle}}
 
@@ -79,7 +83,7 @@ Fixing \(A\) now takes \(n\,(n-1)\) equations for its \(n\,(n-1)\) free entries,
 
 where \(a\) and \(b\) are the observed allele frequencies and \(N_A\), \(N_B\) the numbers of observed alleles, so that the binomial variance contributed by finite sampling is removed analytically at every site.
 
-Figure 3 puts the two estimators side by side on the same simulated history. Three demes evolve under a known importation matrix whose off-diagonal entries run from 2% to 7% per step, and we then choose how deeply to sequence and how many loci to follow. At shallow sampling the direct regression lifts every small coupling toward \(1/n\), exactly the bias described above, and piling on more loci does not rescue it: averaging a biased quantity leaves the bias. The \(F_2\) route stays near the truth and improves with loci. Push the sequencing depth up and the two converge, which is the regime the COVID data actually sits in.
+Figure 4 puts the two estimators side by side on the same simulated history. Three demes evolve under a known importation matrix whose off-diagonal entries run from 2% to 7% per step, and we then choose how deeply to sequence and how many loci to follow. At shallow sampling the direct regression lifts every small coupling toward \(1/n\), exactly the bias described above, and piling on more loci does not rescue it: averaging a biased quantity leaves the bias. The \(F_2\) route stays near the truth and improves with loci. Push the sequencing depth up and the two converge, which is the regime the COVID data actually sits in.
 
 {{figure: gene-flow-figEst}}
 
@@ -101,4 +105,11 @@ The route is where this stops being bookkeeping. Applied to nine Western Eurasia
 
 It would be dishonest to end on that without saying how thin the record still is. Outside the window from 3500 to 2000 BCE the sampling in some of those regions is too sparse for the interpolation to mean much, an apparent westward influx around 3500 BCE looks more like an artifact of poorly differentiated Neolithic populations than a migration, and the error bars on the Pontic Steppe are wide enough to cover a great deal. The method reads a signal that is genuinely there in the mutations nobody selected for. How far back it can be read is a question about excavation, not about inference.
 
-The two analyses discussed here are [Okada et al., PNAS 122, e2500663122 (2025)](https://doi.org/10.1073/pnas.2500663122) for the SARS-CoV-2 transmission networks, with a [commentary](https://doi.org/10.1073/pnas.2533093123) in the same journal, and [Isacchini et al., bioRxiv (2026)](https://doi.org/10.64898/2026.03.12.710875) for the ancient DNA. Code for the first is at [Hallatscheklab/NetworkInfer](https://github.com/Hallatscheklab/NetworkInfer). Elsewhere on this site, on inference that assumes as little as possible: [maximum entropy and density ratio estimation](me.html).
+## References
+
+1. {ref: okada2025} [Okada et al., *PNAS* **122**, e2500663122 (2025)](https://doi.org/10.1073/pnas.2500663122), the SARS-CoV-2 transmission networks, with a [commentary](https://doi.org/10.1073/pnas.2533093123) in the same journal. Code at [Hallatscheklab/NetworkInfer](https://github.com/Hallatscheklab/NetworkInfer).
+1. {ref: isacchini2026} [Isacchini et al., *bioRxiv* (2026)](https://doi.org/10.64898/2026.03.12.710875), the ancient DNA analysis and the \(F_2\) formulation used here.
+1. {ref: mallick2024} [Mallick et al., *Scientific Data* **11**, 182 (2024)](https://doi.org/10.1038/s41597-024-03031-7), the Allen Ancient DNA Resource, released through [Harvard Dataverse](https://doi.org/10.7910/DVN/FFIDCW).
+1. {ref: patterson2012} [Patterson et al., *Genetics* **192**, 1065 (2012)](https://doi.org/10.1534/genetics.112.145037), the \(f\)-statistics.
+
+Elsewhere on this site, on inference that assumes as little as possible: [maximum entropy and density ratio estimation](me.html).
