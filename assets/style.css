@@ -199,12 +199,17 @@ a { color: var(--link); text-decoration: none; }
 .prose a { border-bottom: 1px solid color-mix(in srgb, var(--link) 40%, transparent); }
 .prose a:hover { border-color: var(--link); }
 .prose img { max-width: 100%; height: auto; display: block; margin: 1.6em auto; border: 1px solid var(--rule); }
-.prose ul { padding-left: 20px; margin: 0 0 1.15em; }
+.prose ul, .prose ol { padding-left: 20px; margin: 0 0 1.15em; }
 .prose li { margin: .35em 0; }
+.prose ol li::marker { color: var(--sub); font-variant-numeric: tabular-nums; }
+.prose li:target { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.prose sup.cite { font-size: .68em; line-height: 0; margin-left: 1px; font-family: var(--mono); }
+.prose sup.cite a { border-bottom: none; color: var(--sub); }
+.prose sup.cite a:hover { color: var(--accent); }
 .mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 
 /* ---------------------------------------------------------- figures */
-.fig { border: 1px solid var(--rule); margin: 1.8em 0; }
+.fig { border: 1px solid var(--rule); margin: 1.8em auto; max-width: 88%; }
 .fig-head {
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
   padding: 10px 14px; border-bottom: 1px dashed var(--hair);
