@@ -9,7 +9,7 @@ unlisted: true
 script: assets/gene-flow.js
 ---
 
-During the Delta wave, genomic surveillance in England was producing tens of thousands of SARS-CoV-2 genomes a week, tagged by region. Take any common mutation and follow its frequency in two of those regions: while travel between them is suppressed the two frequencies wander apart, and once travel resumes they converge again. Nobody recorded the journeys that caused the convergence, yet we the imprint of the journey was left for us to read. In this post I will discuss what that relaxation is, why neutrality is exactly the property that makes it readable, and how the same equation applies to ancient human genomes sampled centuries apart.
+During the Delta wave, genomic surveillance in England was producing tens of thousands of SARS-CoV-2 genomes a week, tagged by region. Take any common mutation and follow its frequency in two of those regions: while travel between them is suppressed the two frequencies wander apart, and once travel resumes they converge again. Nobody recorded the journeys that caused the convergence, yet their imprint was left for us to read. In this post I will discuss what that relaxation is, why neutrality is exactly the property that makes it readable, and how the same equation applies to ancient human genomes sampled centuries apart.
 
 The mutations being tracked here are the ones that do not matter. A neutral allele is neither favored nor purged, so the only thing that moves its frequency in a region is the arrival and departure of the hosts carrying it. That is what makes it readable. 
 
