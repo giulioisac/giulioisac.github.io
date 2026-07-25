@@ -57,6 +57,28 @@ Markdown by name on its own line:
 which splices in `figures/gene-flow-figRelax.html`. Keeping them out of the
 prose is the point: the SVG is long and the text should stay readable.
 
+### References
+
+A reference list is an ordered list, one line per entry, each tagged with a key:
+
+```
+## References
+
+1. {ref: patterson2012} [Patterson et al., *Genetics* **192**, 1065 (2012)](https://doi.org/10.1534/genetics.112.145037), the f-statistics.
+```
+
+Cite it from the prose by key, several at once if needed:
+
+```
+one of the f-statistics{{cite: patterson2012}}
+built on both datasets{{cite: okada2025, isacchini2026}}
+```
+
+The build numbers the entries in list order and renders each citation as a
+superscript linking to its entry, so inserting or reordering a reference
+renumbers every citation. A key cited but not defined, defined twice, or written
+as a bullet rather than a numbered item fails the build.
+
 ### Notes
 
 - LaTeX survives the Markdown pass untouched. `\( ... \)` and `\[ ... \]` are

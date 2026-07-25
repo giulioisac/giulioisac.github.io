@@ -27,6 +27,12 @@ INDEX = ROOT / "index.html"
 
 PROSE_INDENT = " " * 6
 FIGURE_RE = re.compile(r"<p>\{\{figure:\s*([A-Za-z0-9_-]+)\}\}</p>")
+CITE_RE = re.compile(r"\{\{cite:\s*([^}]+?)\s*\}\}")
+REF_ITEM_RE = re.compile(
+    r"^(?P<bullet>[ \t]*(?:\d+\.|[-*]))[ \t]+\{ref:\s*(?P<key>[A-Za-z0-9_-]+)\}[ \t]*"
+    r"(?P<text>.*)$",
+    re.M,
+)
 DISPLAY_MATH_RE = re.compile(r"\\\[.*?\\\]", re.S)
 INLINE_MATH_RE = re.compile(r"\\\(.*?\\\)", re.S)
 EXTERNAL_LINK_RE = re.compile(r'<a href="(https?://[^"]+)">')
@@ -51,8 +57,82 @@ def split_front_matter(text: str) -> tuple[dict[str, Any], str]:
     return yaml.safe_load(header), body.strip()
 
 
+def number_references(body: str) -> tuple[str, dict[str, int]]:
+    """Turn `{ref: key}` markers into anchors and number them in list order.
+
+    Args:
+        body: Markdown body, whose reference list is an ordered list of
+            single-line items each starting with a `{ref: key}` marker.
+
+    Returns:
+        The body with every marker replaced by an anchor token that
+        `anchor_reference_items` turns into an `id` on the rendered `<li>`, and
+        a mapping from reference key to the number the reader will see.
+    """
+    numbers: dict[str, int] = {}
+
+    def anchor(match: re.Match[str]) -> str:
+        bullet, key, text = match.group("bullet", "key", "text")
+        if not bullet.strip().endswith("."):
+            raise ValueError(
+                f"reference {key!r} is a bullet item; the reference list must be "
+                "an ordered list so the printed numbers match the citations"
+            )
+        if key in numbers:
+            raise ValueError(f"reference {key!r} is defined twice")
+        numbers[key] = len(numbers) + 1
+        return f"{bullet} REFZ{key}Z{text}"
+
+    return REF_ITEM_RE.sub(anchor, body), numbers
+
+
+def link_citations(body: str, numbers: dict[str, int]) -> str:
+    """Replace `{{cite: key, ...}}` markers with superscript links to the list.
+
+    Args:
+        body: Markdown body, references already numbered.
+        numbers: Mapping from reference key to its number, from
+            `number_references`.
+
+    Returns:
+        The body with every citation marker replaced by a `<sup>` of links.
+    """
+
+    def superscript(match: re.Match[str]) -> str:
+        keys = [key.strip() for key in match.group(1).split(",")]
+        unknown = [key for key in keys if key not in numbers]
+        if unknown:
+            raise ValueError(f"citation of undefined reference(s): {', '.join(unknown)}")
+        links = ", ".join(f'<a href="#ref-{key}">{numbers[key]}</a>' for key in keys)
+        return f'<sup class="cite">{links}</sup>'
+
+    return CITE_RE.sub(superscript, body)
+
+
+def anchor_reference_items(html: str, keys: list[str]) -> str:
+    """Move each reference token from the list item text onto the `<li>` itself.
+
+    Args:
+        html: Rendered HTML still carrying the `REFZ<key>Z` tokens.
+        keys: Every reference key defined in the body.
+
+    Returns:
+        The HTML with each token replaced by an `id` on its list item.
+    """
+    for key in keys:
+        token = f"REFZ{key}Z"
+        anchored = html.replace(f"<li>{token}", f'<li id="ref-{key}">')
+        if anchored == html:
+            raise ValueError(f"reference {key!r} did not render as its own list item")
+        html = anchored
+    return html
+
+
 def render_body(body: str) -> str:
-    """Markdown to HTML, protecting math and splicing in figure partials."""
+    """Markdown to HTML, protecting math and splicing in figures and citations."""
+    body, numbers = number_references(body)
+    body = link_citations(body, numbers)
+
     math: list[str] = []
 
     def stash(match: re.Match[str]) -> str:
@@ -64,6 +144,7 @@ def render_body(body: str) -> str:
     body = INLINE_MATH_RE.sub(stash, body)
 
     html = markdown.markdown(body, extensions=["extra"])
+    html = anchor_reference_items(html, list(numbers))
 
     # A display equation is its own block, not a paragraph of prose.
     for index, expression in enumerate(math):
