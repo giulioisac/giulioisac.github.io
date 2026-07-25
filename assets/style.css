@@ -11,8 +11,8 @@
   --sub:     #6b6b6b;
   --rule:    #111111;   /* structural black lines */
   --hair:    #d6d6d3;   /* dashed dividers */
-  --accent:  #ff4d0d;   /* signal orange — numbers, kickers, marks */
-  --link:    #d23e00;   /* readable link text on light */
+  --accent:  #e8000d;   /* signal red — numbers, kickers, marks */
+  --link:    #b50009;   /* readable link text on light */
   --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --frame: 1120px;
@@ -25,17 +25,17 @@
   --sub:    #8f8f8f;
   --rule:   #3a3a3a;
   --hair:   #272727;
-  --accent: #ff6a2b;
-  --link:   #ff884f;
+  --accent: #ff2d38;
+  --link:   #ff6060;
 }
 /* figure palette: accent carries the data/model series, gray the reference.
    Dark accent is a darker step of the brand orange, validated against #161616. */
 :root {
-  --fig-accent: #ff4d0d;
+  --fig-accent: #e8000d;
   --fig-ref:    #6b6b6b;
 }
 :root[data-theme="dark"] {
-  --fig-accent: #f25c15;
+  --fig-accent: #ff2d38;
   --fig-ref:    #8f8f8f;
 }
 
