@@ -1,0 +1,23 @@
+<figure class="fig" id="figRelax">
+  <div class="fig-head">
+    <span class="fig-tag">Fig. 1</span>
+    <span class="fig-title">Relaxation, and the asymmetry that dates it</span>
+    <span class="fig-read" id="relaxRead"></span>
+  </div>
+  <div class="fig-controls">
+    <label>A ← B <input type="range" id="relaxAB" min="0" max="0.08" step="0.005" value="0.005"> <span class="val" id="relaxABV">0.005</span></label>
+    <label>B ← A <input type="range" id="relaxBA" min="0" max="0.08" step="0.005" value="0.04"> <span class="val" id="relaxBAV">0.040</span></label>
+    <button type="button" id="relaxResample">Resample</button>
+  </div>
+  <div class="fig-body">
+    <svg id="relaxSvg" viewBox="0 0 704 314" role="img" tabindex="0" aria-label="Top panel: neutral allele frequency trajectories for six loci in two populations, A starting near 0.8 and B near 0.2, converging over forty generations at a rate set by the migration sliders. Bottom panel: the genetic distance F between the populations and its two time-lagged versions, which decay as the populations mix and separate from each other when migration runs in one direction only. Arrow keys move a crosshair that reads out the values."></svg>
+  </div>
+  <div class="fig-legend">
+    <span class="key"><span class="sw ref"></span>population A</span>
+    <span class="key"><span class="sw acc"></span>population B</span>
+    <span class="key"><span class="sw"></span>F<sub>AB</sub></span>
+    <span class="key"><span class="sw dash"></span>F′<sub>AB</sub></span>
+    <span class="key"><span class="sw acc"></span>F′<sub>BA</sub></span>
+  </div>
+  <div class="fig-note">240 neutral loci in two demes of effective size 500, six of them drawn in the top panel. The sliders set the fraction of each population replaced by migrants per generation; the lag of the primed statistics is &#8467; = 4 generations. With B importing from A and not the reverse, B moves toward where A used to be, so F′<sub>BA</sub> falls below F<sub>AB</sub> while F′<sub>AB</sub> does not. Set the two sliders equal and the asymmetry disappears.</div>
+</figure>

@@ -1,0 +1,22 @@
+<figure class="fig" id="figEst">
+  <div class="fig-head">
+    <span class="fig-tag">Fig. 3</span>
+    <span class="fig-title">Which statistic survives the noise</span>
+    <span class="fig-read" id="estRead"></span>
+  </div>
+  <div class="fig-controls">
+    <label>sequences <input type="range" id="estS" min="10" max="400" step="10" value="30"> <span class="val" id="estSV">30</span></label>
+    <label>loci <input type="range" id="estL" min="10" max="200" step="10" value="60"> <span class="val" id="estLV">60</span></label>
+    <button type="button" id="estResample">Resample</button>
+    <span id="estFit"></span>
+  </div>
+  <div class="fig-body">
+    <svg id="estSvg" viewBox="0 0 704 300" role="img" aria-label="Six columns, one per off-diagonal entry of a three-by-three importation matrix. Each column shows the true rate as a horizontal bar, the estimate from direct regression on observed frequencies, and the estimate from the F2 regression. A dashed line marks one third, the uniform matrix. At low sequencing depth the direct estimates rise toward that line while the F2 estimates stay on the true values."></svg>
+  </div>
+  <div class="fig-legend">
+    <span class="key"><span class="sw ref"></span>true rate</span>
+    <span class="key"><span class="sw pt ink"></span>direct regression on frequencies</span>
+    <span class="key"><span class="sw pt"></span>regression on F&#8322; statistics</span>
+  </div>
+  <div class="fig-note">Three demes of effective size 400 over 14 steps, sampled with the given number of sequences per deme per step and the given number of independent loci. Both estimators are the same non-negative least squares under a simplex constraint; they differ only in what is regressed. Drift is Gaussian and sampling is binomial, drawn exactly up to 100 sequences and by a variance-matched normal above.</div>
+</figure>

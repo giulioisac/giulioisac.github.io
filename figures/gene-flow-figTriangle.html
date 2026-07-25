@@ -1,0 +1,40 @@
+<figure class="fig" id="figTriangle">
+  <div class="fig-head">
+    <span class="fig-tag">Fig. 2</span>
+    <span class="fig-title">Why the drift term cancels</span>
+  </div>
+  <div class="fig-body">
+    <svg viewBox="0 0 704 300" role="img" aria-label="Left: a triangle whose vertices are population k at time t, population i at time t, and population i at time t plus delta t. Its three sides are the square roots of the distance F between i and k, the displacement F prime i i, and the lagged distance F prime i k. Right: the displacement vector decomposed into a component pointing toward k, which is migration, and a perpendicular component, which is drift.">
+      <text class="pcap" x="44" y="14">ONE LOCUS, THREE POINTS</text>
+      <text class="pcap" x="392" y="14">THE DISPLACEMENT OF i</text>
+
+      <line class="curve ref" x1="80" y1="235" x2="310" y2="235"/>
+      <line class="curve ink" x1="310" y1="235" x2="255" y2="105"/>
+      <line class="curve acc" x1="255" y1="105" x2="80" y2="235"/>
+      <circle class="dot ref" cx="80" cy="235" r="5"/>
+      <circle class="dot" cx="310" cy="235" r="5"/>
+      <circle class="dot acc" cx="255" cy="105" r="5"/>
+      <text class="plabel" x="74" y="257" text-anchor="middle">X&#8342;(t)</text>
+      <text class="plabel" x="322" y="245" text-anchor="start">X&#7522;(t)</text>
+      <text class="plabel" x="255" y="92" text-anchor="middle">X&#7522;(t+&#916;t)</text>
+      <text class="anno" x="195" y="257" text-anchor="middle">&#8730;F&#7522;&#8342;</text>
+      <text class="anno" x="298" y="172" text-anchor="start">&#8730;F&#8242;&#7522;&#7522;</text>
+      <text class="anno" x="146" y="152" text-anchor="middle">&#8730;F&#8242;&#7522;&#8342;</text>
+
+      <line class="xline" x1="645" y1="235" x2="429" y2="235" stroke-width="1" stroke-dasharray="3 4"/>
+      <text class="anno" x="429" y="227" text-anchor="start">toward k</text>
+      <line class="curve ink" x1="645" y1="235" x2="557" y2="107"/>
+      <polygon class="mhead" points="555,105 563.8,109.9 556.4,115.0"/>
+      <line class="curve acc" x1="645" y1="235" x2="557" y2="235"/>
+      <polygon class="mhead acc" points="555,235 564,230.5 564,239.5"/>
+      <line class="curve ref dash" x1="555" y1="233" x2="555" y2="109"/>
+      <polygon class="mhead" points="555,105 550.5,114 559.5,114"/>
+      <circle class="dot" cx="645" cy="235" r="5"/>
+      <circle class="dot acc" cx="555" cy="105" r="5"/>
+      <text class="anno" x="600" y="255" text-anchor="middle">migration</text>
+      <text class="anno" x="547" y="175" text-anchor="end">drift &#951;&#7522;</text>
+      <text class="anno" x="44" y="284">F&#8242;&#7522;&#8342; &#8722; F&#8242;&#7522;&#7522; discards the length of the displacement and keeps its projection onto the k direction</text>
+    </svg>
+  </div>
+  <div class="fig-note">Squaring the identity X&#8242;&#7522; &#8722; X&#8342; = (X&#8242;&#7522; &#8722; X&#7522;) + (X&#7522; &#8722; X&#8342;) turns the triangle into the law of cosines, and the cross term is twice the projection drawn on the right. Drift enters that projection with zero mean because it is uncorrelated with the direction of k; its magnitude sits entirely in F&#8242;&#7522;&#7522;, which the difference removes.</div>
+</figure>
