@@ -169,7 +169,8 @@ a { color: var(--link); text-decoration: none; }
   display: block; padding: 22px 24px 24px; border-right: 1px solid var(--hair);
   transition: background .18s;
 }
-.write a.card:last-child { border-right: 0; }
+.write a.card:nth-child(2n) { border-right: 0; }
+.write a.card:nth-child(n+3) { border-top: 1px solid var(--hair); }
 .write a.card:hover { background: var(--panel); }
 .write .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
 .write h3 { font-size: 17px; font-weight: 600; letter-spacing: -.01em; margin: 10px 0 8px; color: var(--ink); line-height: 1.28; }
@@ -226,19 +227,23 @@ a { color: var(--link); text-decoration: none; }
 .fig .curve.acc { stroke: var(--fig-accent); }
 .fig .curve.ink { stroke: var(--ink); }
 .fig .curve.dash { stroke-dasharray: 6 5; stroke-width: 1.6; }
+.fig .curve.thin { stroke-width: 1.1; opacity: .5; }
 .fig .wash { stroke: none; }
 .fig .wash.ref { fill: var(--fig-ref); opacity: .08; }
 .fig .wash.acc { fill: var(--fig-accent); opacity: .09; }
 .fig .anno { fill: var(--sub); font-size: 11px; }
 .fig .xline { stroke: var(--sub); opacity: .5; }
 .fig .dot { fill: var(--ink); stroke: var(--bg); stroke-width: 2; }
+.fig .dot.ref { fill: var(--fig-ref); }
 .fig .cross { stroke: var(--sub); opacity: .6; }
 .fig .rug.acc { stroke: var(--fig-accent); opacity: .4; }
 .fig .rug.ref { stroke: var(--fig-ref); opacity: .4; }
 .fig .ctick { stroke: var(--fig-accent); stroke-width: 2; }
 .fig .dot.acc { fill: var(--fig-accent); }
 .fig .mhead { fill: var(--sub); stroke: none; }
+.fig .mhead.acc { fill: var(--fig-accent); }
 .key .sw.pt { width: 9px; height: 9px; border: 0; border-radius: 50%; background: var(--fig-accent); }
+.key .sw.pt.ink { background: var(--ink); }
 .fig-legend {
   display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 8px 14px 6px;
   font-family: var(--mono); font-size: 11px; letter-spacing: .02em; color: var(--ink);
@@ -267,6 +272,13 @@ a { color: var(--link); text-decoration: none; }
 }
 .fig-controls button:hover { color: var(--accent); border-color: var(--accent); }
 
+/* ---------------------------------------------------------- print */
+@media print {
+  .fig { break-inside: avoid; }
+  .prose h2 { break-after: avoid; }
+  .topbar, .toggle { display: none; }
+}
+
 /* ---------------------------------------------------------- responsive */
 @media (max-width: 760px) {
   .topbar nav a { display: none; }
@@ -281,4 +293,5 @@ a { color: var(--link); text-decoration: none; }
   .row .yr { padding: 0 0 4px; }
   .write { grid-template-columns: 1fr; }
   .write a.card { border-right: 0; border-bottom: 1px solid var(--hair); }
+  .write a.card:nth-child(n+3) { border-top: 0; }
 }

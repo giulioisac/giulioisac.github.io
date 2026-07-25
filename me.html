@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maximum Entropy, Contrastive Learning and Logistic Regression — Giulio Isacchini</title>
+  <title>Maximum Entropy, Contrastive Learning and Logistic Regression</title>
   <meta name="description" content="How the principle of maximum entropy connects unsupervised learning and density-ratio estimation, and its link to logistic regression.">
   <link rel="icon" href="IMG_5210-circle.001.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=20260725b">
+  <link rel="stylesheet" href="assets/style.css?v=6bbae57635">
   <script>
     (function () {
       var t = localStorage.getItem('theme');
@@ -67,7 +67,7 @@
       \[ d(x)=\frac{P(x)}{P(x)+P_{\rm 0}(x)}=\frac{1}{1+Ze^{E(x)}} \]
       <p>if we parametrize the classifier \(d=d^\theta\), we can minimize the binary cross-entropy</p>
       \[ S(\theta)=-\mathbb{E}_\mathcal{D}[\log d^\theta]-\mathbb{E}_\mathcal{G}[\log (1-d^\theta)] \]
-      <p>and recover the density ratio using the energy representation of \(d^\theta\). Note that \(Z^\theta\) never needs to be computed during training: it enters the logit of \(d^\theta\) only as an additive constant \(-\log Z^\theta\), which can be learned as one extra parameter — the intercept of the classifier — together with \(\theta\) (this is exactly how the demo in Figure 2 treats it). Logistic regression (classification) is the workhorse of supervised learning. It finds here an untraditional application to an unsupervised problem. It is also the seed of much of modern contrastive learning: the discriminator of a GAN estimates exactly this \(d(x)\), and negative-sampling objectives such as word2vec's and InfoNCE descend directly from the NCE loss.</p>
+      <p>and recover the density ratio using the energy representation of \(d^\theta\). Note that \(Z^\theta\) never needs to be computed during training: it enters the logit of \(d^\theta\) only as an additive constant \(-\log Z^\theta\), which can be learned as one extra parameter, the intercept of the classifier, together with \(\theta\) (this is exactly how the demo in Figure 2 treats it). Logistic regression (classification) is the workhorse of supervised learning. It finds here an untraditional application to an unsupervised problem. It is also the seed of much of modern contrastive learning: the discriminator of a GAN estimates exactly this \(d(x)\), and negative-sampling objectives such as word2vec's and InfoNCE descend directly from the NCE loss.</p>
       <p>Figure 1 puts both halves of the argument in one picture. A broad reference \(P_{\rm 0}\) is tilted by the Boltzmann factor \(e^{-E(x)}\) into the distribution \(P\) that matches the constrained moments of the data (top). The optimal classifier between the two crosses \(d=\tfrac{1}{2}\) exactly where the densities intersect, and its logit is the log density ratio \(-E(x)-\log Z\) (bottom): reading the classifier off recovers the energy.</p>
       <figure class="fig" id="figClf">
         <div class="fig-head">
@@ -123,7 +123,7 @@
         </div>
         <div class="fig-note">Top: the factor e<sup>&minus;E(x)</sup> tilts the reference P&#8320; into the closest distribution (in KL divergence) that matches the data&rsquo;s mean &#10216;x&#10217; = 1.1 (tick) and variance. Bottom: the optimal classifier between them crosses d = &#189; exactly where the densities intersect (dots), and its logit is the log density ratio &minus;E(x) &minus; log Z: a logistic regression whose features are exactly the observables g<sub>f</sub>(x) constrained by the maximum-entropy problem.</div>
       </figure>
-      <p>Figure 2 runs the whole scheme in the browser. Samples are drawn from an unknown bimodal \(P(x)\) and from a Gaussian noise distribution \(P_{\rm 0}(x)\); a logistic classifier over a set of basis functions is fitted by gradient descent, and the density it implies, \(e^{-E^\theta(x)}P_{\rm 0}(x)/Z^\theta\), is drawn as it converges. Move the noise distribution away from the data and watch the effective sample size behind the importance-sampling estimate of \(Z^\theta\) collapse — the practical face of the remark above that inference is more stable when \(P_{\rm 0}\) is close to \(P\).</p>
+      <p>Figure 2 runs the whole scheme in the browser. Samples are drawn from an unknown bimodal \(P(x)\) and from a Gaussian noise distribution \(P_{\rm 0}(x)\); a logistic classifier over a set of basis functions is fitted by gradient descent, and the density it implies, \(e^{-E^\theta(x)}P_{\rm 0}(x)/Z^\theta\), is drawn as it converges. Move the noise distribution away from the data and watch the effective sample size behind the importance-sampling estimate of \(Z^\theta\) collapse: the practical face of the remark above that inference is more stable when \(P_{\rm 0}\) is close to \(P\).</p>
       <figure class="fig" id="figDemo">
         <div class="fig-head">
           <span class="fig-tag">Fig. 2</span>
@@ -140,7 +140,7 @@
           <svg id="demoSvg" viewBox="0 0 704 238" role="img" tabindex="0" aria-label="Live noise contrastive estimation demo: density curves of the noise distribution, the unknown target distribution, and the model recovered by a logistic classifier, redrawn as gradient descent converges. Rug marks along the baseline show the data and noise samples. Arrow keys move a crosshair that reads out density values."></svg>
         </div>
         <div class="fig-legend">
-          <span class="key"><span class="sw dash"></span>target P(x) &mdash; unknown</span>
+          <span class="key"><span class="sw dash"></span>target P(x), unknown</span>
           <span class="key"><span class="sw ref"></span>noise P&#8320;(x)</span>
           <span class="key"><span class="sw acc"></span>recovered e<sup>&minus;E(x)</sup>P&#8320;(x)/Z</span>
           <span class="key"><span class="sw tick acc"></span>data samples</span>

@@ -1,0 +1,38 @@
+<figure class="fig" id="figLoss">
+  <div class="fig-head">
+    <span class="fig-tag">Fig. 2</span>
+    <span class="fig-title">The quantile loss is a tilted L1</span>
+  </div>
+  <div class="fig-body">
+    <svg viewBox="0 0 704 244" role="img" aria-label="The quantile loss as a function of the error, for alpha 0.25, 0.5 and 0.75: V-shaped lines through the origin whose two arms have slopes alpha and alpha minus one, tilting progressively as alpha grows.">
+      <text class="pcap" x="44" y="14">QUANTILE LOSS &#8467;<tspan font-size="8" dy="2">&#945;</tspan><tspan dy="-2">(e)</tspan></text>
+      <line class="grid" x1="44" y1="35" x2="688" y2="35" stroke-width="1"/>
+      <line class="grid" x1="44" y1="90" x2="688" y2="90" stroke-width="1"/>
+      <line class="grid" x1="44" y1="145" x2="688" y2="145" stroke-width="1"/>
+      <line class="axis" x1="44" y1="200" x2="688" y2="200" stroke-width="1"/>
+      <line class="xline" x1="366" y1="22" x2="366" y2="200" stroke-width="1"/>
+      <text class="tick-label" x="36" y="204" text-anchor="end">0</text>
+      <text class="tick-label" x="36" y="149" text-anchor="end">0.5</text>
+      <text class="tick-label" x="36" y="94" text-anchor="end">1</text>
+      <text class="tick-label" x="36" y="39" text-anchor="end">1.5</text>
+      <line class="axis" x1="44" y1="200" x2="44" y2="204" stroke-width="1"/><text class="tick-label" x="44" y="218" text-anchor="middle">-2</text>
+      <line class="axis" x1="205" y1="200" x2="205" y2="204" stroke-width="1"/><text class="tick-label" x="205" y="218" text-anchor="middle">-1</text>
+      <line class="axis" x1="366" y1="200" x2="366" y2="204" stroke-width="1"/><text class="tick-label" x="366" y="218" text-anchor="middle">0</text>
+      <line class="axis" x1="527" y1="200" x2="527" y2="204" stroke-width="1"/><text class="tick-label" x="527" y="218" text-anchor="middle">1</text>
+      <line class="axis" x1="688" y1="200" x2="688" y2="204" stroke-width="1"/><text class="tick-label" x="688" y="218" text-anchor="middle">2</text>
+      <path class="curve ref" d="M44,35 L366,200 L688,145"/>
+      <path class="curve ink" d="M44,90 L366,200 L688,90"/>
+      <path class="curve acc" d="M44,145 L366,200 L688,35"/>
+      <text class="plabel" x="674" y="139" text-anchor="end">&#945; = 0.25</text>
+      <text class="plabel" x="674" y="84" text-anchor="end">&#945; = 0.5</text>
+      <text class="plabel" x="674" y="29" text-anchor="end">&#945; = 0.75</text>
+      <text class="anno" x="688" y="236" text-anchor="end">error e = y &#8722; f(x)</text>
+    </svg>
+  </div>
+  <div class="fig-legend">
+    <span class="key"><span class="sw ref"></span>&#945; = 0.25</span>
+    <span class="key"><span class="sw"></span>&#945; = 0.5 (&#189; &#183; L1)</span>
+    <span class="key"><span class="sw acc"></span>&#945; = 0.75</span>
+  </div>
+  <div class="fig-note">&#8467;<sub>&#945;</sub>(e) = max(&#945;e, (&#945;&minus;1)e) weights under-prediction (e &gt; 0) by &#945; and over-prediction (e &lt; 0) by 1&minus;&#945;, so the minimiser of its average is the &#945;-quantile of y given x. At &#945; = &#189; it equals half the L1 loss, so its minimiser is the median.</div>
+</figure>
