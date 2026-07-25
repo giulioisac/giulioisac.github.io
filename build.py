@@ -105,6 +105,7 @@ def render_post(post: dict[str, Any], env: Environment, version: str) -> str:
             description=post["description"],
             tag=post["tag"],
             math=post.get("math", False),
+            unlisted=post.get("unlisted", False),
             script=post.get("script"),
             version=version,
             content=render_body(post["body"]),

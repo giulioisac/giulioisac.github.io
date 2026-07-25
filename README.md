@@ -41,8 +41,9 @@ script: assets/gene-flow.js
 
 `order` sets the position in the writing list on the home page. `math` pulls in
 MathJax. `script` is an optional per-post JavaScript file, used for the live
-figures. `unlisted: true` still builds the page, but keeps it off the home page,
-so a draft can be published at its URL before it is announced.
+figures. `unlisted: true` still builds the page, but keeps it off the home page
+and adds `noindex, nofollow`, so a draft can sit at its URL without being linked
+or indexed. Unlinked is not private: anyone with the URL can still read it.
 
 ### Figures
 
