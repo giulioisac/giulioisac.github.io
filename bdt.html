@@ -47,24 +47,165 @@
       <p>Sometimes, however, the model is inconsistent with observations for really "boring" reasons. For example, imagine an experimental apparatus that measures the density of a liquid and whose performance depends on the daily variation of the temperature in the room. We are not interested in what caused these variations. We don't want to develop a detailed model of this effect. We just want to correct the predictions of our original model to be consistent with the observed data. In this case, scientists use the term "calibration" to define a set of methods and techniques for correcting the model's projections to match real-world data.</p>
 
       <h2>Quantile Matching</h2>
-      <p>A popular and powerful technique for calibration is called quantile matching (or quantile mapping), which is a generic method to map one probability distribution to another by matching their quantiles. For an intuitive explanation see the following figure:</p>
-      <img src="quantile1.jpeg" alt="Quantile matching illustration" width="492" height="392">
+      <p>A popular and powerful technique for calibration is called quantile matching (or quantile mapping), which is a generic method to map one probability distribution to another by matching their quantiles. For an intuitive explanation see Figure 1:</p>
+      <figure class="fig" id="figMatch">
+        <div class="fig-head">
+          <span class="fig-tag">Fig. 1</span>
+          <span class="fig-title">Quantile matching</span>
+        </div>
+        <div class="fig-body">
+          <svg viewBox="0 0 704 254" role="img" aria-label="Two cumulative distribution functions over the measured density: the model CDF in gray and the observed CDF in orange. Dashed arrows carry a value y up to the model CDF, across to the observed CDF at the same quantile, and down to the corrected value y-tilde.">
+            <defs><marker id="mArrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="mhead" d="M0,0 L8,4 L0,8 Z"/></marker></defs>
+            <text class="pcap" x="44" y="14">CUMULATIVE PROBABILITY</text>
+            <line class="grid" x1="44" y1="30" x2="688" y2="30" stroke-width="1"/>
+            <line class="grid" x1="44" y1="120" x2="688" y2="120" stroke-width="1"/>
+            <line class="axis" x1="44" y1="210" x2="688" y2="210" stroke-width="1"/>
+            <text class="tick-label" x="36" y="214" text-anchor="end">0</text>
+            <text class="tick-label" x="36" y="124" text-anchor="end">&#189;</text>
+            <text class="tick-label" x="36" y="34" text-anchor="end">1</text>
+            <line class="axis" x1="44" y1="210" x2="44" y2="214" stroke-width="1"/><text class="tick-label" x="44" y="228" text-anchor="middle">0</text>
+            <line class="axis" x1="205" y1="210" x2="205" y2="214" stroke-width="1"/><text class="tick-label" x="205" y="228" text-anchor="middle">1</text>
+            <line class="axis" x1="366" y1="210" x2="366" y2="214" stroke-width="1"/><text class="tick-label" x="366" y="228" text-anchor="middle">2</text>
+            <line class="axis" x1="527" y1="210" x2="527" y2="214" stroke-width="1"/><text class="tick-label" x="527" y="228" text-anchor="middle">3</text>
+            <line class="axis" x1="688" y1="210" x2="688" y2="214" stroke-width="1"/><text class="tick-label" x="688" y="228" text-anchor="middle">4</text>
+            <path class="curve ref" d="M44,202.43 L49.37,201.93 L54.73,201.4 L60.1,200.84 L65.47,200.26 L70.83,199.64 L76.2,199 L81.57,198.32 L86.93,197.62 L92.3,196.88 L97.67,196.11 L103.03,195.3 L108.4,194.46 L113.77,193.58 L119.13,192.67 L124.5,191.72 L129.87,190.73 L135.23,189.71 L140.6,188.64 L145.97,187.54 L151.33,186.4 L156.7,185.22 L162.07,184 L167.43,182.74 L172.8,181.44 L178.17,180.1 L183.53,178.72 L188.9,177.3 L194.27,175.84 L199.63,174.34 L205,172.81 L210.37,171.23 L215.73,169.62 L221.1,167.96 L226.47,166.28 L231.83,164.55 L237.2,162.79 L242.57,161 L247.93,159.17 L253.3,157.31 L258.67,155.42 L264.03,153.5 L269.4,151.55 L274.77,149.57 L280.13,147.57 L285.5,145.55 L290.87,143.5 L296.23,141.43 L301.6,139.34 L306.97,137.24 L312.33,135.12 L317.7,132.98 L323.07,130.84 L328.43,128.68 L333.8,126.52 L339.17,124.35 L344.53,122.18 L349.9,120 L355.27,117.82 L360.63,115.65 L366,113.48 L371.37,111.32 L376.73,109.16 L382.1,107.02 L387.47,104.88 L392.83,102.76 L398.2,100.66 L403.57,98.57 L408.93,96.5 L414.3,94.45 L419.67,92.43 L425.03,90.43 L430.4,88.45 L435.77,86.5 L441.13,84.58 L446.5,82.69 L451.87,80.83 L457.23,79 L462.6,77.21 L467.97,75.45 L473.33,73.72 L478.7,72.04 L484.07,70.38 L489.43,68.77 L494.8,67.19 L500.17,65.66 L505.53,64.16 L510.9,62.7 L516.27,61.28 L521.63,59.9 L527,58.56 L532.37,57.26 L537.73,56 L543.1,54.78 L548.47,53.6 L553.83,52.46 L559.2,51.36 L564.57,50.29 L569.93,49.27 L575.3,48.28 L580.67,47.33 L586.03,46.42 L591.4,45.54 L596.77,44.7 L602.13,43.89 L607.5,43.12 L612.87,42.38 L618.23,41.68 L623.6,41 L628.97,40.36 L634.33,39.74 L639.7,39.16 L645.07,38.6 L650.43,38.07 L655.8,37.57 L661.17,37.09 L666.53,36.64 L671.9,36.21 L677.27,35.81 L682.63,35.42 L688,35.06"/>
+            <path class="curve acc" d="M44,209.99 L49.37,209.98 L54.73,209.98 L60.1,209.98 L65.47,209.97 L70.83,209.96 L76.2,209.95 L81.57,209.94 L86.93,209.92 L92.3,209.9 L97.67,209.88 L103.03,209.85 L108.4,209.82 L113.77,209.78 L119.13,209.73 L124.5,209.67 L129.87,209.6 L135.23,209.52 L140.6,209.43 L145.97,209.31 L151.33,209.18 L156.7,209.02 L162.07,208.83 L167.43,208.62 L172.8,208.37 L178.17,208.09 L183.53,207.76 L188.9,207.38 L194.27,206.95 L199.63,206.46 L205,205.9 L210.37,205.28 L215.73,204.58 L221.1,203.79 L226.47,202.91 L231.83,201.93 L237.2,200.84 L242.57,199.64 L247.93,198.32 L253.3,196.88 L258.67,195.3 L264.03,193.58 L269.4,191.72 L274.77,189.71 L280.13,187.54 L285.5,185.22 L290.87,182.74 L296.23,180.1 L301.6,177.3 L306.97,174.34 L312.33,171.23 L317.7,167.96 L323.07,164.55 L328.43,161 L333.8,157.31 L339.17,153.5 L344.53,149.57 L349.9,145.55 L355.27,141.43 L360.63,137.24 L366,132.98 L371.37,128.68 L376.73,124.35 L382.1,120 L387.47,115.65 L392.83,111.32 L398.2,107.02 L403.57,102.76 L408.93,98.57 L414.3,94.45 L419.67,90.43 L425.03,86.5 L430.4,82.69 L435.77,79 L441.13,75.45 L446.5,72.04 L451.87,68.77 L457.23,65.66 L462.6,62.7 L467.97,59.9 L473.33,57.26 L478.7,54.78 L484.07,52.46 L489.43,50.29 L494.8,48.28 L500.17,46.42 L505.53,44.7 L510.9,43.12 L516.27,41.68 L521.63,40.36 L527,39.16 L532.37,38.07 L537.73,37.09 L543.1,36.21 L548.47,35.42 L553.83,34.72 L559.2,34.1 L564.57,33.54 L569.93,33.05 L575.3,32.62 L580.67,32.24 L586.03,31.91 L591.4,31.63 L596.77,31.38 L602.13,31.17 L607.5,30.98 L612.87,30.82 L618.23,30.69 L623.6,30.57 L628.97,30.48 L634.33,30.4 L639.7,30.33 L645.07,30.27 L650.43,30.22 L655.8,30.18 L661.17,30.15 L666.53,30.12 L671.9,30.1 L677.27,30.08 L682.63,30.06 L688,30.05"/>
+            <path class="cross" stroke-dasharray="5 4" stroke-width="1.3" fill="none" d="M285.5,210 L285.5,145.55"/>
+            <path class="cross" stroke-dasharray="5 4" stroke-width="1.3" fill="none" marker-end="url(#mArrow)" d="M285.5,145.55 L349.9,145.55"/>
+            <path class="cross" stroke-dasharray="5 4" stroke-width="1.3" fill="none" marker-end="url(#mArrow)" d="M349.9,145.55 L349.9,206"/>
+            <line class="ctick" x1="285.5" y1="210" x2="285.5" y2="202"/>
+            <line class="ctick" x1="349.9" y1="210" x2="349.9" y2="202"/>
+            <text class="anno" x="279.5" y="205" text-anchor="end">y</text>
+            <text class="anno" x="356.9" y="205">&#7929;</text>
+            <text class="plabel" x="213.05" y="154.46" text-anchor="end">F&#8344;</text>
+            <text class="plabel" x="481.92" y="70.06">F&#8337;</text>
+            <text class="anno" x="688" y="246" text-anchor="end">density y</text>
+          </svg>
+        </div>
+        <div class="fig-legend">
+          <span class="key"><span class="sw ref"></span>model CDF F<sub>m</sub>(y)</span>
+          <span class="key"><span class="sw acc"></span>observed CDF F<sub>e</sub>(y)</span>
+          <span class="key"><span class="sw ref dash"></span>quantile map</span>
+        </div>
+        <div class="fig-note">Given a measured density y, read off the model quantile F<sub>m</sub>(y), then substitute the value of the same quantile in the observed distribution: &#7929; = F<sub>e</sub><sup>&minus;1</sup>(F<sub>m</sub>(y)). Repeating for every data point maps the model distribution onto the observed one.</div>
+      </figure>
       <p>Given a specific value of our measured density \(y\), we read the value of the cumulative distribution function for the model (model quantile) and then substitute the value of the same quantile in the observed distribution, then repeat this substitution for all data points.</p>
+      <p>Why does this work? If \(y\) is drawn from the model, its quantile \(F_m(y)\) is uniformly distributed between 0 and 1 — the classic probability integral transform. Feeding a uniform variable through the inverse CDF of the observed distribution then produces samples distributed exactly as the data: \(\tilde{y}=F_e^{-1}(F_m(y))\sim P_e\). The map is also monotone, so it preserves the ordering of the original predictions.</p>
       <p>The problem becomes a bit more complicated when we introduce a dependency on a control variable \(x\), i.e., the temperature in the problem above.</p>
       <p>The output of our model (experiment) can then be formulated via a conditional probability distribution \(P_m(y|x)\) (\(P_e(y|x)\)) which depends on the temperature \(x\). We are looking for a consistent way to map \(P_m(y|x)\) to \(P_e(y|x)\) to match the model's prediction.</p>
-      <p>When both the input variable \(x\) and the output variables \(y\) are multidimensional, this procedure however breaks down. This is where quantile regression comes into play.</p>
+      <p>When both the input variable \(x\) and the output variables \(y\) are multidimensional, this procedure however breaks down. Even with a single continuous control variable we never observe two measurements at exactly the same \(x\), so the conditional distributions cannot be estimated pointwise, and binning in \(x\) runs out of statistics as soon as the input grows beyond a couple of dimensions. What we need is a model of the conditional quantiles as functions of \(x\), one that shares statistical strength across nearby inputs. This is where quantile regression comes into play.</p>
 
       <h2>Quantile Regression</h2>
-      <p>When you minimize the least squares loss \(L_2(\theta)= \langle (y-f_\theta(x))^2 \rangle\) you are looking for a model \(f_\theta\) parametrized by \(\theta\) that reproduces the mean of the distribution of \(y\). With the L1 loss \(L_1 (\theta) = \langle |y-f_\theta(x)| \rangle\), you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. See figure and this <a href="https://towardsdatascience.com/quantile-regression-from-linear-models-to-trees-to-deep-learning-af3738b527c3" target="_blank" rel="noopener">post</a>:</p>
-      <img src="quantile2.jpeg" alt="Quantile regression loss illustration">
-      <p>We can fit as many quantiles of the distribution as we want, one at a time. An easy and powerful method to perform this fitting is <a href="https://xgboost.readthedocs.io/en/stable/tutorials/model.html" target="_blank" rel="noopener">boosted decision trees</a> (BDTs). BDTs are great: they are reliable yet flexible models that can well approximate multidimensional functions, a must-have tool for any novice data scientist to approach the complexity of real-world data.</p>
+      <p>When you minimize the least squares loss \(L_2(\theta)= \langle (y-f_\theta(x))^2 \rangle\) you are looking for a model \(f_\theta\) parametrized by \(\theta\) that reproduces the mean of the distribution of \(y\). With the L1 loss \(L_1 (\theta) = \langle |y-f_\theta(x)| \rangle\), you fit its median (the 0.5 quantile). The quantile loss, which looks like a tilted L1 loss, allows you to fit any quantile of the distribution. See Figure 2 and this <a href="https://towardsdatascience.com/quantile-regression-from-linear-models-to-trees-to-deep-learning-af3738b527c3" target="_blank" rel="noopener">post</a>:</p>
+      <figure class="fig" id="figLoss">
+        <div class="fig-head">
+          <span class="fig-tag">Fig. 2</span>
+          <span class="fig-title">The quantile loss is a tilted L1</span>
+        </div>
+        <div class="fig-body">
+          <svg viewBox="0 0 704 244" role="img" aria-label="The quantile loss as a function of the error, for alpha 0.25, 0.5 and 0.75: V-shaped lines through the origin whose two arms have slopes alpha and alpha minus one, tilting progressively as alpha grows.">
+            <text class="pcap" x="44" y="14">QUANTILE LOSS &#8467;<tspan font-size="8" dy="2">&#945;</tspan><tspan dy="-2">(e)</tspan></text>
+            <line class="grid" x1="44" y1="35" x2="688" y2="35" stroke-width="1"/>
+            <line class="grid" x1="44" y1="90" x2="688" y2="90" stroke-width="1"/>
+            <line class="grid" x1="44" y1="145" x2="688" y2="145" stroke-width="1"/>
+            <line class="axis" x1="44" y1="200" x2="688" y2="200" stroke-width="1"/>
+            <line class="xline" x1="366" y1="22" x2="366" y2="200" stroke-width="1"/>
+            <text class="tick-label" x="36" y="204" text-anchor="end">0</text>
+            <text class="tick-label" x="36" y="149" text-anchor="end">0.5</text>
+            <text class="tick-label" x="36" y="94" text-anchor="end">1</text>
+            <text class="tick-label" x="36" y="39" text-anchor="end">1.5</text>
+            <line class="axis" x1="44" y1="200" x2="44" y2="204" stroke-width="1"/><text class="tick-label" x="44" y="218" text-anchor="middle">-2</text>
+            <line class="axis" x1="205" y1="200" x2="205" y2="204" stroke-width="1"/><text class="tick-label" x="205" y="218" text-anchor="middle">-1</text>
+            <line class="axis" x1="366" y1="200" x2="366" y2="204" stroke-width="1"/><text class="tick-label" x="366" y="218" text-anchor="middle">0</text>
+            <line class="axis" x1="527" y1="200" x2="527" y2="204" stroke-width="1"/><text class="tick-label" x="527" y="218" text-anchor="middle">1</text>
+            <line class="axis" x1="688" y1="200" x2="688" y2="204" stroke-width="1"/><text class="tick-label" x="688" y="218" text-anchor="middle">2</text>
+            <path class="curve ref" d="M44,35 L366,200 L688,145"/>
+            <path class="curve ink" d="M44,90 L366,200 L688,90"/>
+            <path class="curve acc" d="M44,145 L366,200 L688,35"/>
+            <text class="plabel" x="674" y="139" text-anchor="end">&#945; = 0.25</text>
+            <text class="plabel" x="674" y="84" text-anchor="end">&#945; = 0.5</text>
+            <text class="plabel" x="674" y="29" text-anchor="end">&#945; = 0.75</text>
+            <text class="anno" x="688" y="236" text-anchor="end">error e = y &#8722; f(x)</text>
+          </svg>
+        </div>
+        <div class="fig-legend">
+          <span class="key"><span class="sw ref"></span>&#945; = 0.25</span>
+          <span class="key"><span class="sw"></span>&#945; = 0.5 (&#189; &#183; L1)</span>
+          <span class="key"><span class="sw acc"></span>&#945; = 0.75</span>
+        </div>
+        <div class="fig-note">&#8467;<sub>&#945;</sub>(e) = max(&#945;e, (&#945;&minus;1)e) weights under-prediction (e &gt; 0) by &#945; and over-prediction (e &lt; 0) by 1&minus;&#945;, so the minimiser of its average is the &#945;-quantile of y given x. At &#945; = &#189; it equals half the L1 loss, so its minimiser is the median.</div>
+      </figure>
+      <p>We can fit as many quantiles of the distribution as we want, one at a time (Figure 3). An easy and powerful method to perform this fitting is <a href="https://xgboost.readthedocs.io/en/stable/tutorials/model.html" target="_blank" rel="noopener">boosted decision trees</a> (BDTs). BDTs are great: they are reliable yet flexible models that can well approximate multidimensional functions, a must-have tool for any novice data scientist to approach the complexity of real-world data.</p>
+      <figure class="fig" id="figFit">
+        <div class="fig-head">
+          <span class="fig-tag">Fig. 3</span>
+          <span class="fig-title">Quantile regression</span>
+        </div>
+        <div class="fig-body">
+          <svg viewBox="0 0 704 262" role="img" aria-label="Scattered density-versus-temperature observations in orange, with five thin fitted quantile curves for alpha from 0.05 to 0.95 overlaid, fanning apart as temperature grows.">
+            <text class="pcap" x="44" y="14">DENSITY y</text>
+            <line class="grid" x1="44" y1="47.09" x2="688" y2="47.09" stroke-width="1"/>
+            <line class="grid" x1="44" y1="132.55" x2="688" y2="132.55" stroke-width="1"/>
+            <line class="axis" x1="44" y1="218" x2="688" y2="218" stroke-width="1"/>
+            <text class="tick-label" x="36" y="222" text-anchor="end">0.9</text>
+            <text class="tick-label" x="36" y="136.55" text-anchor="end">1.0</text>
+            <text class="tick-label" x="36" y="51.09" text-anchor="end">1.1</text>
+            <line class="axis" x1="44" y1="218" x2="44" y2="222" stroke-width="1"/><text class="tick-label" x="44" y="236" text-anchor="middle">16</text>
+            <line class="axis" x1="205" y1="218" x2="205" y2="222" stroke-width="1"/><text class="tick-label" x="205" y="236" text-anchor="middle">19</text>
+            <line class="axis" x1="366" y1="218" x2="366" y2="222" stroke-width="1"/><text class="tick-label" x="366" y="236" text-anchor="middle">22</text>
+            <line class="axis" x1="527" y1="218" x2="527" y2="222" stroke-width="1"/><text class="tick-label" x="527" y="236" text-anchor="middle">25</text>
+            <line class="axis" x1="688" y1="218" x2="688" y2="222" stroke-width="1"/><text class="tick-label" x="688" y="236" text-anchor="middle">28</text>
+            <circle class="dot acc" cx="263.48" cy="51.44" r="4.5"/>
+            <circle class="dot acc" cx="638.01" cy="148.24" r="4.5"/>
+            <circle class="dot acc" cx="316.9" cy="76.49" r="4.5"/>
+            <circle class="dot acc" cx="404.23" cy="89.77" r="4.5"/>
+            <circle class="dot acc" cx="309.09" cy="82.71" r="4.5"/>
+            <circle class="dot acc" cx="508.82" cy="67.32" r="4.5"/>
+            <circle class="dot acc" cx="486.55" cy="150.14" r="4.5"/>
+            <circle class="dot acc" cx="565.2" cy="84.18" r="4.5"/>
+            <circle class="dot acc" cx="612.5" cy="69.71" r="4.5"/>
+            <circle class="dot acc" cx="229.01" cy="40.83" r="4.5"/>
+            <circle class="dot acc" cx="137.51" cy="74.89" r="4.5"/>
+            <circle class="dot acc" cx="225.15" cy="50.61" r="4.5"/>
+            <circle class="dot acc" cx="172.69" cy="41.1" r="4.5"/>
+            <circle class="dot acc" cx="606.82" cy="143.66" r="4.5"/>
+            <circle class="dot acc" cx="158.4" cy="53.96" r="4.5"/>
+            <circle class="dot acc" cx="573.25" cy="57.77" r="4.5"/>
+            <circle class="dot acc" cx="496.57" cy="88.87" r="4.5"/>
+            <circle class="dot acc" cx="244.38" cy="73.04" r="4.5"/>
+            <circle class="dot acc" cx="156.18" cy="64.06" r="4.5"/>
+            <circle class="dot acc" cx="311.55" cy="114.8" r="4.5"/>
+            <circle class="dot acc" cx="508.89" cy="106.12" r="4.5"/>
+            <circle class="dot acc" cx="84.51" cy="70.95" r="4.5"/>
+            <path class="curve ink" style="stroke-width:1.5" d="M54.73,77.67 L64.84,78.65 L74.95,79.7 L85.06,80.81 L95.16,81.97 L105.27,83.17 L115.38,84.41 L125.48,85.68 L135.59,86.98 L145.7,88.31 L155.81,89.67 L165.91,91.05 L176.02,92.45 L186.13,93.88 L196.23,95.33 L206.34,96.8 L216.45,98.28 L226.56,99.79 L236.66,101.32 L246.77,102.86 L256.88,104.42 L266.99,105.99 L277.09,107.59 L287.2,109.19 L297.31,110.82 L307.41,112.45 L317.52,114.1 L327.63,115.77 L337.74,117.45 L347.84,119.14 L357.95,120.84 L368.06,122.56 L378.16,124.29 L388.27,126.03 L398.38,127.79 L408.49,129.55 L418.59,131.33 L428.7,133.12 L438.81,134.92 L448.92,136.73 L459.02,138.55 L469.13,140.39 L479.24,142.23 L489.34,144.08 L499.45,145.95 L509.56,147.82 L519.67,149.7 L529.77,151.6 L539.88,153.5 L549.99,155.41 L560.09,157.33 L570.2,159.26 L580.31,161.2 L590.42,163.15 L600.52,165.11 L610.63,167.07 L620.74,169.05 L630.85,171.03 L640.95,173.02 L651.06,175.02 L661.17,177.03"/>
+            <path class="curve ink" style="stroke-width:1.5" d="M54.73,67.35 L64.84,67.98 L74.95,68.69 L85.06,69.46 L95.16,70.27 L105.27,71.13 L115.38,72.02 L125.48,72.95 L135.59,73.91 L145.7,74.89 L155.81,75.91 L165.91,76.94 L176.02,78 L186.13,79.09 L196.23,80.19 L206.34,81.32 L216.45,82.46 L226.56,83.62 L236.66,84.81 L246.77,86 L256.88,87.22 L266.99,88.45 L277.09,89.7 L287.2,90.96 L297.31,92.24 L307.41,93.54 L317.52,94.84 L327.63,96.16 L337.74,97.5 L347.84,98.85 L357.95,100.21 L368.06,101.58 L378.16,102.97 L388.27,104.37 L398.38,105.78 L408.49,107.2 L418.59,108.63 L428.7,110.08 L438.81,111.54 L448.92,113 L459.02,114.48 L469.13,115.97 L479.24,117.47 L489.34,118.98 L499.45,120.5 L509.56,122.03 L519.67,123.57 L529.77,125.12 L539.88,126.67 L549.99,128.24 L560.09,129.82 L570.2,131.41 L580.31,133 L590.42,134.61 L600.52,136.22 L610.63,137.84 L620.74,139.47 L630.85,141.11 L640.95,142.76 L651.06,144.42 L661.17,146.08"/>
+            <path class="curve ink" style="stroke-width:1.5" d="M54.73,60.18 L64.84,60.58 L74.95,61.05 L85.06,61.58 L95.16,62.15 L105.27,62.77 L115.38,63.43 L125.48,64.11 L135.59,64.83 L145.7,65.58 L155.81,66.35 L165.91,67.15 L176.02,67.98 L186.13,68.82 L196.23,69.69 L206.34,70.57 L216.45,71.48 L226.56,72.4 L236.66,73.35 L246.77,74.31 L256.88,75.28 L266.99,76.28 L277.09,77.29 L287.2,78.31 L297.31,79.35 L307.41,80.4 L317.52,81.47 L327.63,82.56 L337.74,83.65 L347.84,84.76 L357.95,85.88 L368.06,87.02 L378.16,88.17 L388.27,89.33 L398.38,90.5 L408.49,91.68 L418.59,92.88 L428.7,94.08 L438.81,95.3 L448.92,96.53 L459.02,97.77 L469.13,99.02 L479.24,100.28 L489.34,101.55 L499.45,102.83 L509.56,104.12 L519.67,105.42 L529.77,106.73 L539.88,108.05 L549.99,109.38 L560.09,110.72 L570.2,112.07 L580.31,113.43 L590.42,114.79 L600.52,116.17 L610.63,117.55 L620.74,118.94 L630.85,120.35 L640.95,121.75 L651.06,123.17 L661.17,124.6"/>
+            <path class="curve ink" style="stroke-width:1.5" d="M54.73,53.02 L64.84,53.17 L74.95,53.4 L85.06,53.69 L95.16,54.03 L105.27,54.41 L115.38,54.83 L125.48,55.28 L135.59,55.76 L145.7,56.27 L155.81,56.8 L165.91,57.36 L176.02,57.95 L186.13,58.55 L196.23,59.18 L206.34,59.83 L216.45,60.49 L226.56,61.18 L236.66,61.88 L246.77,62.61 L256.88,63.34 L266.99,64.1 L277.09,64.87 L287.2,65.66 L297.31,66.46 L307.41,67.27 L317.52,68.1 L327.63,68.95 L337.74,69.81 L347.84,70.68 L357.95,71.56 L368.06,72.46 L378.16,73.37 L388.27,74.29 L398.38,75.22 L408.49,76.16 L418.59,77.12 L428.7,78.09 L438.81,79.07 L448.92,80.06 L459.02,81.06 L469.13,82.07 L479.24,83.09 L489.34,84.12 L499.45,85.17 L509.56,86.22 L519.67,87.28 L529.77,88.35 L539.88,89.43 L549.99,90.53 L560.09,91.63 L570.2,92.73 L580.31,93.85 L590.42,94.98 L600.52,96.12 L610.63,97.26 L620.74,98.42 L630.85,99.58 L640.95,100.75 L651.06,101.93 L661.17,103.12"/>
+            <path class="curve ink" style="stroke-width:1.5" d="M54.73,42.69 L64.84,42.51 L74.95,42.39 L85.06,42.34 L95.16,42.34 L105.27,42.37 L115.38,42.44 L125.48,42.55 L135.59,42.69 L145.7,42.85 L155.81,43.04 L165.91,43.26 L176.02,43.5 L186.13,43.76 L196.23,44.04 L206.34,44.35 L216.45,44.67 L226.56,45.01 L236.66,45.37 L246.77,45.75 L256.88,46.15 L266.99,46.56 L277.09,46.98 L287.2,47.43 L297.31,47.88 L307.41,48.36 L317.52,48.84 L327.63,49.34 L337.74,49.86 L347.84,50.38 L357.95,50.92 L368.06,51.48 L378.16,52.04 L388.27,52.62 L398.38,53.21 L408.49,53.81 L418.59,54.42 L428.7,55.05 L438.81,55.68 L448.92,56.33 L459.02,56.98 L469.13,57.65 L479.24,58.33 L489.34,59.02 L499.45,59.72 L509.56,60.43 L519.67,61.14 L529.77,61.87 L539.88,62.61 L549.99,63.36 L560.09,64.11 L570.2,64.88 L580.31,65.65 L590.42,66.44 L600.52,67.23 L610.63,68.03 L620.74,68.84 L630.85,69.66 L640.95,70.49 L651.06,71.32 L661.17,72.17"/>
+            <text class="tick-label" x="666" y="181.03">0.05</text>
+            <text class="tick-label" x="666" y="150.08">0.25</text>
+            <text class="tick-label" x="666" y="128.6">0.5</text>
+            <text class="tick-label" x="666" y="107.12">0.75</text>
+            <text class="tick-label" x="666" y="76.17">0.95</text>
+            <text class="anno" x="688" y="254" text-anchor="end">temperature x</text>
+          </svg>
+        </div>
+        <div class="fig-legend">
+          <span class="key"><span class="sw"></span>quantile fits f<sup>&#945;</sup>(x)</span>
+          <span class="key"><span class="sw pt"></span>observations (x, y)</span>
+        </div>
+        <div class="fig-note">One model per quantile, fitted with boosted decision trees: curves f<sup>&#945;</sup>(x) for &#945; = 0.05, 0.25, 0.5, 0.75, 0.95 on (temperature, density) pairs. Run on simulated and on experimental data, this gives the two families f<sup>&#945;</sup><sub>m</sub> and f<sup>&#945;</sup><sub>e</sub> that the matching step substitutes between.</div>
+      </figure>
       <p>In order to fit our BDTs we need however data. The experimental data is already there and we can use it to infer the quantiles of \(P_e(y|x)\). Deriving the quantiles of the model is a bit more complicated since, even with simple models, an analytical description for the quantiles is intractable. To circumvent this problem we can generate data by performing simulation from the model (sampling from \(P_m(y|x)\)) and infer a BDT on this generated data.</p>
       <p>We now possess all the tools to map our model predictions to data differentiably with quantile matching:</p>
       <ul>
-        <li>infer \(N\) models \(f^\alpha_m\) and \(f^\alpha_e\) indexed by \(\alpha=1/N,1/(N-1),\dots,1\) on simulated and experimental data.</li>
+        <li>infer \(N\) models \(f^\alpha_m\) and \(f^\alpha_e\) indexed by \(\alpha=1/N,2/N,\dots,1\) on simulated and experimental data.</li>
         <li>for all \(j\) pairs of simulated data \((x_j,y_j)_m\) find the closest \(\tilde{\alpha}\) such that \(f^{\tilde{\alpha}}_m(x_j)\sim y_j\) and substitute the new value from the inferred experimental distribution \(\tilde{y}_j=f^{\tilde{\alpha}}_e(x_j)\)</li>
       </ul>
+      <p>These two steps are exactly the construction of Figure 1, carried out separately at each \(x\): finding the closest \(\tilde{\alpha}\) reads the (discretized) model CDF at \(y_j\), and evaluating \(f^{\tilde{\alpha}}_e(x_j)\) applies the inverse observed CDF. The fitted quantile curves simply stand in for the two cumulative distributions, one pair per value of the control variable.</p>
       <p>And you are done: the resulting set \(\{(x_j,\tilde{y}_j)\}_m\) should match your experimental data.</p>
+      <p>A final word on the "differentiable" in the title. The empirical construction of Figure 1 is a lookup in a step-function CDF, which is awkward to embed in anything downstream. Expressed through the fitted quantile models, the calibration map instead has a functional form: it can be evaluated at new inputs and inserted into a larger optimization — say, to propagate the correction through an analysis, or to tune model parameters against calibrated predictions. With boosted trees the map is differentiable in spirit rather than in the strict sense — trees are piecewise constant — and substituting a smooth quantile learner such as a neural network makes it literal.</p>
+      <p>This is, incidentally, not a toy recipe: I first met it at CERN, where boosted decision trees trained with a quantile loss calibrate the simulated photon shower shapes of the CMS detector against collision data.</p>
     </div>
   </article>
 
