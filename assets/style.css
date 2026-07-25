@@ -203,7 +203,7 @@ a { color: var(--link); text-decoration: none; }
 .mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
 
 /* ---------------------------------------------------------- figures */
-.fig { border: 1px solid var(--rule); background: var(--panel); margin: 1.8em 0; }
+.fig { border: 1px solid var(--rule); margin: 1.8em 0; }
 .fig-head {
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
   padding: 10px 14px; border-bottom: 1px dashed var(--hair);
@@ -231,7 +231,7 @@ a { color: var(--link); text-decoration: none; }
 .fig .wash.acc { fill: var(--fig-accent); opacity: .09; }
 .fig .anno { fill: var(--sub); font-size: 11px; }
 .fig .xline { stroke: var(--sub); opacity: .5; }
-.fig .dot { fill: var(--ink); stroke: var(--panel); stroke-width: 2; }
+.fig .dot { fill: var(--ink); stroke: var(--bg); stroke-width: 2; }
 .fig .cross { stroke: var(--sub); opacity: .6; }
 .fig .rug.acc { stroke: var(--fig-accent); opacity: .4; }
 .fig .rug.ref { stroke: var(--fig-ref); opacity: .4; }
