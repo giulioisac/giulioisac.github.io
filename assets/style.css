@@ -28,6 +28,16 @@
   --accent: #ff6a2b;
   --link:   #ff884f;
 }
+/* figure palette: accent carries the data/model series, gray the reference.
+   Dark accent is a darker step of the brand orange, validated against #161616. */
+:root {
+  --fig-accent: #ff4d0d;
+  --fig-ref:    #6b6b6b;
+}
+:root[data-theme="dark"] {
+  --fig-accent: #f25c15;
+  --fig-ref:    #8f8f8f;
+}
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 60px; }
@@ -191,6 +201,71 @@ a { color: var(--link); text-decoration: none; }
 .prose ul { padding-left: 20px; margin: 0 0 1.15em; }
 .prose li { margin: .35em 0; }
 .mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+
+/* ---------------------------------------------------------- figures */
+.fig { border: 1px solid var(--rule); background: var(--panel); margin: 1.8em 0; }
+.fig-head {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 10px 14px; border-bottom: 1px dashed var(--hair);
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+}
+.fig-tag { color: var(--accent); white-space: nowrap; }
+.fig-title { color: var(--ink); }
+.fig-read { margin-left: auto; color: var(--sub); text-transform: none; letter-spacing: .02em; white-space: nowrap; }
+.fig-body { padding: 10px 8px 2px; overflow-x: auto; }
+.fig-body svg { display: block; width: 100%; min-width: 560px; height: auto; }
+.fig-body svg:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+.fig svg text { font-family: var(--mono); }
+.fig .grid { stroke: var(--hair); }
+.fig .axis { stroke: var(--sub); }
+.fig .tick-label { fill: var(--sub); font-size: 11px; }
+.fig .plabel { fill: var(--ink); font-size: 12px; }
+.fig .pcap { fill: var(--sub); font-size: 10px; letter-spacing: .12em; }
+.fig .curve { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.fig .curve.ref { stroke: var(--fig-ref); }
+.fig .curve.acc { stroke: var(--fig-accent); }
+.fig .curve.ink { stroke: var(--ink); }
+.fig .curve.dash { stroke-dasharray: 6 5; stroke-width: 1.6; }
+.fig .wash { stroke: none; }
+.fig .wash.ref { fill: var(--fig-ref); opacity: .08; }
+.fig .wash.acc { fill: var(--fig-accent); opacity: .09; }
+.fig .anno { fill: var(--sub); font-size: 11px; }
+.fig .xline { stroke: var(--sub); opacity: .5; }
+.fig .dot { fill: var(--ink); stroke: var(--panel); stroke-width: 2; }
+.fig .cross { stroke: var(--sub); opacity: .6; }
+.fig .rug.acc { stroke: var(--fig-accent); opacity: .4; }
+.fig .rug.ref { stroke: var(--fig-ref); opacity: .4; }
+.fig .ctick { stroke: var(--fig-accent); stroke-width: 2; }
+.fig .dot.acc { fill: var(--fig-accent); }
+.fig .mhead { fill: var(--sub); stroke: none; }
+.key .sw.pt { width: 9px; height: 9px; border: 0; border-radius: 50%; background: var(--fig-accent); }
+.fig-legend {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 8px 14px 6px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .02em; color: var(--ink);
+}
+.key { display: inline-flex; align-items: center; gap: 7px; }
+.key .sw { width: 16px; border-top: 2px solid var(--ink); }
+.key .sw.ref { border-top-color: var(--fig-ref); }
+.key .sw.acc { border-top-color: var(--fig-accent); }
+.key .sw.dash { border-top-style: dashed; }
+.key .sw.tick { width: 0; height: 10px; border-top: 0; border-left: 2px solid var(--ink); }
+.key .sw.tick.ref { border-left-color: var(--fig-ref); }
+.key .sw.tick.acc { border-left-color: var(--fig-accent); }
+.fig-note { padding: 0 14px 12px; font-size: 13px; line-height: 1.5; color: var(--sub); }
+.fig-controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;
+  padding: 10px 14px; border-bottom: 1px dashed var(--hair);
+  font-family: var(--mono); font-size: 11px; color: var(--sub); letter-spacing: .02em;
+}
+.fig-controls label { display: inline-flex; align-items: center; gap: 8px; }
+.fig-controls input[type="range"] { width: 130px; accent-color: var(--accent); }
+.fig-controls .val { color: var(--ink); min-width: 4ch; }
+.fig-controls button {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  background: transparent; color: var(--ink); border: 1px solid var(--rule);
+  padding: 5px 12px; cursor: pointer; transition: color .18s, border-color .18s;
+}
+.fig-controls button:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ---------------------------------------------------------- responsive */
 @media (max-width: 760px) {
