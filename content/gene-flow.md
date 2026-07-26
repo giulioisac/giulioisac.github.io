@@ -65,10 +65,6 @@ The derivation costs nothing. Split the lagged difference as \(X'_i - X_k = (X'_
 
 where \(F'_{ii}\) is the mean squared displacement of population \(i\) over the interval, every quantity on both sides is a measurable genetic distance, and the dependence on \(A\) is still linear. Genetic drift has vanished. Its variance lives in \(F'_{ii}\), which enters \(F'_{ik}\) identically and cancels in the difference of the two lagged statistics.
 
-Figure 3 is the same statement drawn as a triangle. The displacement of population \(i\) over one interval decomposes into a pull toward the other populations and a random kick, and only the pull is correlated with the direction of \(k\). Subtracting \(F'_{ii}\) discards the squared length of the displacement, drift included, and keeps its projection.
-
-{{figure: gene-flow-figTriangle}}
-
 ## Rates Instead of Proportions
 
 The appeal of this construction is how little it assumes. There is no phylogeny to reconstruct and no ancestral source population to postulate, which matters because both are modeling choices that quietly determine the answer. What comes out is a matrix of rates over an interval, estimated by a convex program that scales to whatever sequencing produces next.
