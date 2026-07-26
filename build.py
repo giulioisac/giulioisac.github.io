@@ -43,10 +43,21 @@ INDEX_MARKERS = re.compile(
 app = typer.Typer(add_completion=False, help=__doc__)
 
 
+def asset_version(path: Path) -> str:
+    """Content hash of one asset, used to bust the GitHub Pages cache.
+
+    Args:
+        path: The asset to hash, relative to the site root or absolute.
+
+    Returns:
+        The first ten hex digits of its SHA-256.
+    """
+    return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()[:10]
+
+
 def stylesheet_version() -> str:
-    """Content hash of the stylesheet, used to bust the GitHub Pages cache."""
-    digest = hashlib.sha256(STYLESHEET.read_bytes()).hexdigest()
-    return digest[:10]
+    """Content hash of the shared stylesheet."""
+    return asset_version(STYLESHEET)
 
 
 def split_front_matter(text: str) -> tuple[dict[str, Any], str]:
@@ -102,7 +113,9 @@ def link_citations(body: str, numbers: dict[str, int]) -> str:
         keys = [key.strip() for key in match.group(1).split(",")]
         unknown = [key for key in keys if key not in numbers]
         if unknown:
-            raise ValueError(f"citation of undefined reference(s): {', '.join(unknown)}")
+            raise ValueError(
+                f"citation of undefined reference(s): {', '.join(unknown)}"
+            )
         links = ", ".join(f'<a href="#ref-{key}">{numbers[key]}</a>' for key in keys)
         return f'<sup class="cite">{links}</sup>'
 
@@ -188,6 +201,8 @@ def render_post(post: dict[str, Any], env: Environment, version: str) -> str:
             math=post.get("math", False),
             unlisted=post.get("unlisted", False),
             script=post.get("script"),
+            style=post.get("style"),
+            style_version=asset_version(post["style"]) if post.get("style") else None,
             version=version,
             content=render_body(post["body"]),
         ).rstrip("\n")
