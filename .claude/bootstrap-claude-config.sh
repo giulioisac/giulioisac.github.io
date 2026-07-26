@@ -107,6 +107,14 @@ if not any(entry in g.get("hooks", []) for g in groups):
 PY
 fi
 
+# --- git identity -------------------------------------------------------------
+
+# Commits from this account go out under the owner's name. The sandbox image
+# leaves the global identity set to someone else, so a repo cloned here without
+# a repo-local override would be committed under the wrong name.
+git config --global user.name "giulioisac"
+git config --global user.email "giulioisac@gmail.com"
+
 # --- deps --------------------------------------------------------------------
 
 # Only what the hooks need. ruff backs the PostToolUse hook; without it every
