@@ -11,6 +11,10 @@
           {
             "type": "command",
             "command": "pip install --quiet -r \"$CLAUDE_PROJECT_DIR\"/requirements.txt 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "command": "git -C \"$CLAUDE_PROJECT_DIR\" config --local user.name giulioisac; git -C \"$CLAUDE_PROJECT_DIR\" config --local user.email giulioisac@gmail.com"
           }
         ]
       }
