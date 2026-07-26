@@ -1,0 +1,3 @@
+# Build dependencies for build.py.
+markdown
+typer
