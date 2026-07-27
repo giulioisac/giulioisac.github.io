@@ -14,7 +14,7 @@
           },
           {
             "type": "command",
-            "command": "git -C \"$CLAUDE_PROJECT_DIR\" config --local user.name giulioisac; git -C \"$CLAUDE_PROJECT_DIR\" config --local user.email giulioisac@gmail.com"
+            "command": "git -C \"$CLAUDE_PROJECT_DIR\" config --local user.name giulioisac; git -C \"$CLAUDE_PROJECT_DIR\" config --local user.email giulioisac@gmail.com; git -C \"$CLAUDE_PROJECT_DIR\" config --local commit.gpgsign false"
           }
         ]
       }
