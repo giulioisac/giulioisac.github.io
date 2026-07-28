@@ -4,12 +4,12 @@
     <span class="fig-title">State-space model: hidden frequencies, noisy observations</span>
   </div>
   <div class="fig-body">
-    <svg viewBox="0 0 704 198" role="img" aria-label="State-space model diagram with two rows. Top row: three open circles labeled X at times t minus 1, t, and t plus 1, each holding the vector of true frequencies across regions, connected left to right by rightward arrows. Every transition arrow carries the same label, A times X plus eta: migration by the matrix A plus drift, with drift variance Q equals x times one minus x over Ne. Bottom row: three shaded circles labeled Y at the same times, each connected from the hidden state above by a downward arrow annotated sampling R equals c times x times one minus x over S. Ellipses on both sides extend the chain in both directions.">
+    <svg viewBox="0 0 704 198" role="img" aria-label="State-space model diagram with two rows. Top row: three open circles labeled X at times t minus 1, t, and t plus 1, each holding the vector of true frequencies across regions, connected left to right by rightward arrows. Every transition arrow carries the same label, A times X plus eta: migration by the matrix A plus drift, whose variance x times one minus x over Ne is captioned above the row. Bottom row: three shaded circles labeled Y at the same times, each connected from the hidden state above by a downward arrow, with the sampling variance c times x times one minus x over S annotated beside them. Ellipses on both sides extend the chain in both directions.">
 
       <!-- one caption for the transition row, and the same label on every
            transition arrow: each step is migration by A plus drift -->
-      <text class="pcap" text-anchor="middle" x="352" y="26">MIGRATION + DRIFT</text>
-      <text class="anno" text-anchor="middle" x="352" y="38">Q&#160;=&#160;x(1&#8722;x)&#160;/&#160;N<tspan dy="3" font-size="8">e</tspan></text>
+      <text class="pcap" text-anchor="middle" x="352" y="26">DRIFT</text>
+      <text class="anno" text-anchor="middle" x="352" y="38">x(1&#8722;x)&#160;/&#160;N<tspan dy="3" font-size="8">e</tspan></text>
       <text class="anno" text-anchor="middle" x="276" y="62">A&#8202;X&#160;+&#160;&#951;</text>
       <text class="anno" text-anchor="middle" x="424" y="62">A&#8202;X&#160;+&#160;&#951;</text>
 
@@ -35,7 +35,7 @@
 
       <!-- sampling annotation between the rows, right side -->
       <text class="pcap" text-anchor="start" x="528" y="104">SAMPLING</text>
-      <text class="anno" text-anchor="start" x="528" y="117">R&#160;=&#160;c&#160;x(1&#8722;x)&#160;/&#160;S</text>
+      <text class="anno" text-anchor="start" x="528" y="117">c&#160;x(1&#8722;x)&#160;/&#160;S</text>
 
       <!-- hidden state circles (open) -->
       <circle cx="200" cy="72" r="26" style="fill:var(--panel);stroke:var(--ink);stroke-width:1.5"/>
@@ -68,5 +68,5 @@
       sampled frequencies Y(t), observed
     </span>
   </div>
-  <div class="fig-note">Standard graphical model notation: open nodes are hidden, shaded nodes are observed. The hidden state X(t) is the whole vector of true frequencies, one per region. Every transition is the one step of Eq. 1, migration by A plus drift &#951; of variance Q&#160;=&#160;x(1&#8722;x)/N<sub>e</sub>, which is why each arrow carries the same label; A is what couples the regions and it is what we are after. What we observe is the frequency counted in S sequences, adding sampling variance R&#160;=&#160;c&#160;x(1&#8722;x)/S with a per-region overdispersion c. With Gaussian approximations in both terms the model becomes a Kalman filter, and its analytic likelihood makes parameter estimation cheap.</div>
+  <div class="fig-note">Standard graphical model notation: open nodes are hidden, shaded nodes are observed. The hidden state X(t) is the whole vector of true frequencies, one per region. Every transition is the one step of Eq. 1, migration by A plus drift &#951;, which is why each arrow carries the same label; A is what couples the regions and it is what we are after. The two annotated quantities are the variances: &#951; contributes x(1&#8722;x)/N<sub>e</sub> per step, and observing the frequency in S sequences adds c&#160;x(1&#8722;x)/S, with c a per-region overdispersion. With Gaussian approximations in both terms the model becomes a Kalman filter, and its analytic likelihood makes parameter estimation cheap.</div>
 </figure>
