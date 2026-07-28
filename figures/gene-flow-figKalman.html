@@ -4,12 +4,11 @@
     <span class="fig-title">State-space model: hidden frequencies, noisy observations</span>
   </div>
   <div class="fig-body">
-    <svg viewBox="0 0 704 198" role="img" aria-label="State-space model diagram with two rows. Top row: three open circles labeled X at times t minus 1, t, and t plus 1, each holding the vector of true frequencies across regions, connected left to right by rightward arrows. Every transition arrow carries the same label, A times X plus eta: migration by the matrix A plus drift, whose variance x times one minus x over Ne is captioned above the row. Bottom row: three shaded circles labeled Y at the same times, each connected from the hidden state above by a downward arrow, with the sampling variance c times x times one minus x over S annotated beside them. Ellipses on both sides extend the chain in both directions.">
+    <svg viewBox="0 0 704 176" role="img" aria-label="State-space model diagram with two rows. Top row: three open circles labeled X at times t minus 1, t, and t plus 1, each holding the vector of true frequencies across regions, connected left to right by rightward arrows. Every transition arrow carries the same label, A times X plus eta: migration by the matrix A plus drift. Bottom row: three shaded circles labeled Y at the same times, each connected from the hidden state above by a downward arrow, with the sampling variance c times x times one minus x over S annotated beside them. Ellipses on both sides extend the chain in both directions.">
+    <g transform="translate(0,-22)">
 
-      <!-- one caption for the transition row, and the same label on every
-           transition arrow: each step is migration by A plus drift -->
-      <text class="pcap" text-anchor="middle" x="352" y="26">DRIFT</text>
-      <text class="anno" text-anchor="middle" x="352" y="38">x(1&#8722;x)&#160;/&#160;N<tspan dy="3" font-size="8">e</tspan></text>
+      <!-- the same label on every transition arrow: each step is migration
+           by A plus drift -->
       <text class="anno" text-anchor="middle" x="276" y="62">A&#8202;X&#160;+&#160;&#951;</text>
       <text class="anno" text-anchor="middle" x="424" y="62">A&#8202;X&#160;+&#160;&#951;</text>
 
@@ -56,6 +55,7 @@
       <text class="plabel" font-size="10" text-anchor="middle" x="200" y="156">Y(t&#8722;1)</text>
       <text class="plabel" font-size="10" text-anchor="middle" x="352" y="156">Y(t)</text>
       <text class="plabel" font-size="10" text-anchor="middle" x="504" y="156">Y(t+1)</text>
+    </g>
     </svg>
   </div>
   <div class="fig-legend">
@@ -68,5 +68,5 @@
       sampled frequencies Y(t), observed
     </span>
   </div>
-  <div class="fig-note">Standard graphical model notation: open nodes are hidden, shaded nodes are observed. The hidden state X(t) is the whole vector of true frequencies, one per region. Every transition is the one step of Eq. 1, migration by A plus drift &#951;, which is why each arrow carries the same label; A is what couples the regions and it is what we are after. The two annotated quantities are the variances: &#951; contributes x(1&#8722;x)/N<sub>e</sub> per step, and observing the frequency in S sequences adds c&#160;x(1&#8722;x)/S, with c a per-region overdispersion. With Gaussian approximations in both terms the model becomes a Kalman filter, and its analytic likelihood makes parameter estimation cheap.</div>
+  <div class="fig-note">Standard graphical model notation: open nodes are hidden, shaded nodes are observed. The hidden state X(t) is the whole vector of true frequencies, one per region. Every transition is the one step of Eq. 1, migration by A plus drift &#951;, which is why each arrow carries the same label; A is what couples the regions and it is what we are after. The drift &#951; has variance x(1&#8722;x)/N<sub>e</sub> per step, and observing the frequency in S sequences adds a further c&#160;x(1&#8722;x)/S, with c a per-region overdispersion. With Gaussian approximations in both terms the model becomes a Kalman filter, and its analytic likelihood makes parameter estimation cheap.</div>
 </figure>
