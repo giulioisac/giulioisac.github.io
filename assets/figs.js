@@ -64,9 +64,9 @@
   crosshair(document.getElementById("clfSvg"), document.getElementById("clfRead"), {
     xMin: -4.5, xMax: 4.5, bands: [[22, 154], [178, 274]],
     series: [
-      { n: "P₀", f: p0Clf },
+      { n: "Q", f: p0Clf },
       { n: "P", f: pClf },
-      { n: "P/P₀", f: function (x) { return pClf(x) / p0Clf(x); }, d: 2 },
+      { n: "P/Q", f: function (x) { return pClf(x) / p0Clf(x); }, d: 2 },
       { n: "d", f: function (x) { var r = pClf(x) / p0Clf(x); return r / (1 + r); }, d: 2 }
     ]
   });
@@ -215,7 +215,7 @@
   var cross = crosshair(svg, document.getElementById("demoRead"), {
     xMin: XMIN, xMax: XMAX, bands: [[TOP, BASE]],
     series: [
-      { n: "P₀", f: noisePdf },
+      { n: "Q", f: noisePdf },
       { n: "P", f: target },
       { n: "P̂", f: modelPdf }
     ]
