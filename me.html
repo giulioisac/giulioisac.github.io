@@ -108,12 +108,12 @@
           </svg>
         </div>
         <div class="fig-legend">
-          <span class="key"><span class="sw ref"></span>P<sub>1</sub>(x) = N(0, 1.5&sup2;)</span>
+          <span class="key"><span class="sw ref"></span>Q(x) = N(0, 1.5&sup2;)</span>
           <span class="key"><span class="sw dash"></span>Boltzmann factor &#8733; e<sup>&minus;E(x)</sup></span>
-          <span class="key"><span class="sw acc"></span>P<sub>2</sub>(x) = e<sup>&minus;E(x)</sup>P<sub>1</sub>(x)/Z</span>
-          <span class="key"><span class="sw"></span>d(x) = P<sub>2</sub>/(P<sub>1</sub>+P<sub>2</sub>)</span>
+          <span class="key"><span class="sw acc"></span>P(x) = e<sup>&minus;E(x)</sup>Q(x)/Z</span>
+          <span class="key"><span class="sw"></span>d(x) = P/(P+Q)</span>
         </div>
-        <div class="fig-note">Top: the factor e<sup>&minus;E(x)</sup> tilts the reference P<sub>1</sub> into the closest distribution (in KL divergence) that matches the data&rsquo;s mean &#10216;x&#10217; = 1.1 (tick) and variance. Bottom: the optimal classifier between them crosses d = &#189; exactly where the densities intersect (dots), and its logit is the log density ratio &minus;E(x) &minus; log Z: a logistic regression whose features are exactly the observables g<sub>f</sub>(x) constrained by the maximum-entropy problem.</div>
+        <div class="fig-note">Top: the factor e<sup>&minus;E(x)</sup> tilts the reference Q into the closest distribution (in KL divergence) that matches the data&rsquo;s mean &#10216;x&#10217; = 1.1 (tick) and variance. Bottom: the optimal classifier between them crosses d = &#189; exactly where the densities intersect (dots), and its logit is the log density ratio &minus;E(x) &minus; log Z: a logistic regression whose features are exactly the observables g<sub>f</sub>(x) constrained by the maximum-entropy problem.</div>
       </figure>
 
       <h2>Connection to Logistic Regression</h2>
@@ -131,8 +131,8 @@
           <span class="fig-read" id="demoRead"></span>
         </div>
         <div class="fig-controls">
-          <label>noise &mu;<sub>1</sub> <input type="range" id="demoMu" min="-3" max="3" step="0.1" value="0"> <span class="val" id="demoMuV">0.0</span></label>
-          <label>noise &sigma;<sub>1</sub> <input type="range" id="demoSg" min="0.6" max="3" step="0.05" value="1.8"> <span class="val" id="demoSgV">1.80</span></label>
+          <label>noise &mu;<sub>Q</sub> <input type="range" id="demoMu" min="-3" max="3" step="0.1" value="0"> <span class="val" id="demoMuV">0.0</span></label>
+          <label>noise &sigma;<sub>Q</sub> <input type="range" id="demoSg" min="0.6" max="3" step="0.05" value="1.8"> <span class="val" id="demoSgV">1.80</span></label>
           <button type="button" id="demoResample">Resample</button>
           <span id="demoFit">step 0</span>
         </div>
@@ -140,13 +140,13 @@
           <svg id="demoSvg" viewBox="0 0 704 238" role="img" tabindex="0" aria-label="Live noise contrastive estimation demo: density curves of the noise distribution, the unknown target distribution, and the model recovered by a logistic classifier, redrawn as gradient descent converges. Rug marks along the baseline show the data and noise samples. Arrow keys move a crosshair that reads out density values."></svg>
         </div>
         <div class="fig-legend">
-          <span class="key"><span class="sw dash"></span>target P<sub>2</sub>(x), unknown</span>
-          <span class="key"><span class="sw ref"></span>noise P<sub>1</sub>(x)</span>
-          <span class="key"><span class="sw acc"></span>recovered e<sup>&minus;E(x)</sup>P<sub>1</sub>(x)/Z</span>
+          <span class="key"><span class="sw dash"></span>target P(x), unknown</span>
+          <span class="key"><span class="sw ref"></span>noise Q(x)</span>
+          <span class="key"><span class="sw acc"></span>recovered e<sup>&minus;E(x)</sup>Q(x)/Z</span>
           <span class="key"><span class="sw tick acc"></span>data samples</span>
           <span class="key"><span class="sw tick ref"></span>noise samples</span>
         </div>
-        <div class="fig-note">Logistic regression on 400 data and 400 noise samples over nine basis functions. ESS is the effective sample size of the importance-sampling estimate of Z: (&Sigma;w)&sup2;/&Sigma;w&sup2; with w = e<sup>&minus;E</sup> on the noise samples. As P<sub>1</sub> drifts away from P<sub>2</sub>, a few noise samples carry all the weight, ESS collapses, and the recovered density degrades.</div>
+        <div class="fig-note">Logistic regression on 400 data and 400 noise samples over nine basis functions. ESS is the effective sample size of the importance-sampling estimate of Z: (&Sigma;w)&sup2;/&Sigma;w&sup2; with w = e<sup>&minus;E</sup> on the noise samples. As Q drifts away from P, a few noise samples carry all the weight, ESS collapses, and the recovered density degrades.</div>
       </figure>
 
       <h2>Why do we care? The road to explainable blackboxes</h2>

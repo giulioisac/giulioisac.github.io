@@ -45,10 +45,10 @@
     </svg>
   </div>
   <div class="fig-legend">
-    <span class="key"><span class="sw ref"></span>P<sub>1</sub>(x) = N(0, 1.5&sup2;)</span>
+    <span class="key"><span class="sw ref"></span>Q(x) = N(0, 1.5&sup2;)</span>
     <span class="key"><span class="sw dash"></span>Boltzmann factor &#8733; e<sup>&minus;E(x)</sup></span>
-    <span class="key"><span class="sw acc"></span>P<sub>2</sub>(x) = e<sup>&minus;E(x)</sup>P<sub>1</sub>(x)/Z</span>
-    <span class="key"><span class="sw"></span>d(x) = P<sub>2</sub>/(P<sub>1</sub>+P<sub>2</sub>)</span>
+    <span class="key"><span class="sw acc"></span>P(x) = e<sup>&minus;E(x)</sup>Q(x)/Z</span>
+    <span class="key"><span class="sw"></span>d(x) = P/(P+Q)</span>
   </div>
-  <div class="fig-note">Top: the factor e<sup>&minus;E(x)</sup> tilts the reference P<sub>1</sub> into the closest distribution (in KL divergence) that matches the data&rsquo;s mean &#10216;x&#10217; = 1.1 (tick) and variance. Bottom: the optimal classifier between them crosses d = &#189; exactly where the densities intersect (dots), and its logit is the log density ratio &minus;E(x) &minus; log Z: a logistic regression whose features are exactly the observables g<sub>f</sub>(x) constrained by the maximum-entropy problem.</div>
+  <div class="fig-note">Top: the factor e<sup>&minus;E(x)</sup> tilts the reference Q into the closest distribution (in KL divergence) that matches the data&rsquo;s mean &#10216;x&#10217; = 1.1 (tick) and variance. Bottom: the optimal classifier between them crosses d = &#189; exactly where the densities intersect (dots), and its logit is the log density ratio &minus;E(x) &minus; log Z: a logistic regression whose features are exactly the observables g<sub>f</sub>(x) constrained by the maximum-entropy problem.</div>
 </figure>

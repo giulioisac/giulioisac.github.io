@@ -1,5 +1,5 @@
-/* Figures for me.html: crosshair readouts on the static figures (Figs 1-2)
-   and the live noise-contrastive-estimation demo (Fig 3). No dependencies. */
+/* Figures for me.html: the crosshair readout on the static figure (Fig 1)
+   and the live noise-contrastive-estimation demo (Fig 2). No dependencies. */
 (function () {
   "use strict";
   var NS = "http://www.w3.org/2000/svg";
@@ -59,15 +59,15 @@
   }
 
   /* ---- Fig 1: exponential tilt + the classifier it defines ---- */
-  function p0Clf(x) { return gauss(x, 0, 1.5); }
+  function qClf(x) { return gauss(x, 0, 1.5); }
   function pClf(x) { return gauss(x, 1.1, 0.75); }
   crosshair(document.getElementById("clfSvg"), document.getElementById("clfRead"), {
     xMin: -4.5, xMax: 4.5, bands: [[22, 154], [178, 274]],
     series: [
-      { n: "Q", f: p0Clf },
+      { n: "Q", f: qClf },
       { n: "P", f: pClf },
-      { n: "P/Q", f: function (x) { return pClf(x) / p0Clf(x); }, d: 2 },
-      { n: "d", f: function (x) { var r = pClf(x) / p0Clf(x); return r / (1 + r); }, d: 2 }
+      { n: "P/Q", f: function (x) { return pClf(x) / qClf(x); }, d: 2 },
+      { n: "d", f: function (x) { var r = pClf(x) / qClf(x); return r / (1 + r); }, d: 2 }
     ]
   });
 
@@ -149,7 +149,7 @@
   }
   function sampleNoise() {
     var xs = [];
-    for (var i = 0; i < N; i++) xs.push(mu0 + sg0 * randn());
+    for (var i = 0; i < N; i++) xs.push(muQ + sgQ * randn());
     return xs;
   }
   function drawRug(g, xs, cls, y1, y2) {
@@ -164,7 +164,7 @@
   var sgEl = document.getElementById("demoSg"), sgV = document.getElementById("demoSgV");
   var fitEl = document.getElementById("demoFit");
 
-  var mu0 = 0, sg0 = 1.8;
+  var muQ = 0, sgQ = 1.8;
   var theta = new Float64Array(NF), grad = new Float64Array(NF);
   var D = sampleData(), G = sampleNoise();
   var FD = featM(D), FG = featM(G);
@@ -197,9 +197,9 @@
       if (step >= MAXSTEP) break;
     }
   }
-  function noisePdf(x) { return gauss(x, mu0, sg0); }
+  function noisePdf(x) { return gauss(x, muQ, sgQ); }
   function logitAt(x) { return dot(theta, feats(x)); }
-  function modelPdf(x) { // e^{s(x)} P0(x) / Z  with Z importance-sampled on noise
+  function modelPdf(x) { // e^{s(x)} Q(x) / Z  with Z importance-sampled on noise
     return Math.exp(Math.min(logitAt(x), 30)) * noisePdf(x) / Z;
   }
   function updateZ() {
@@ -243,13 +243,13 @@
   }
 
   muEl.addEventListener("input", function () {
-    mu0 = +muEl.value; muV.textContent = mu0.toFixed(1);
+    muQ = +muEl.value; muV.textContent = muQ.toFixed(1);
     G = sampleNoise(); FG = featM(G);
     drawRug(rugNoise, G, "rug ref", 207, 213);
     step = 0; start();
   });
   sgEl.addEventListener("input", function () {
-    sg0 = +sgEl.value; sgV.textContent = sg0.toFixed(2);
+    sgQ = +sgEl.value; sgV.textContent = sgQ.toFixed(2);
     G = sampleNoise(); FG = featM(G);
     drawRug(rugNoise, G, "rug ref", 207, 213);
     step = 0; start();
