@@ -68,7 +68,7 @@
 
     var TT = 40, LAG = 4, NL = 240, SHOW = 6, NE = 500, FMAX = 0.45;
     var T1 = 22, B1 = 150, T2 = 186, B2 = 274;
-    var mAB = 0.005, mBA = 0.04, seedA = null, seedB = null;
+    var mIK = 0.005, mKI = 0.04, seedI = null, seedK = null;
 
     function px(t) { return ML + t / TT * PW; }
     function pyf(v) { return B1 - v * (B1 - T1); }
@@ -100,58 +100,58 @@
     el("text", { class: "anno", x: ML + PW / 2, y: B2 + 34, "text-anchor": "middle" }, svg).textContent = "generations";
 
     var defs = el("defs", {}, svg);
-    el("rect", { x: ML, y: T1 - 6, width: PW, height: B1 - T1 + 6 }, el("clipPath", { id: "relaxClipA" }, defs));
-    el("rect", { x: ML, y: T2 - 6, width: PW, height: B2 - T2 + 6 }, el("clipPath", { id: "relaxClipB" }, defs));
-    var gTraj = el("g", { "clip-path": "url(#relaxClipA)" }, svg);
-    var gStat = el("g", { "clip-path": "url(#relaxClipB)" }, svg);
-    var trajA = [], trajB = [], i;
-    for (i = 0; i < SHOW; i++) trajA.push(el("path", { class: "curve ref thin" }, gTraj));
-    for (i = 0; i < SHOW; i++) trajB.push(el("path", { class: "curve acc thin" }, gTraj));
+    el("rect", { x: ML, y: T1 - 6, width: PW, height: B1 - T1 + 6 }, el("clipPath", { id: "relaxClipTraj" }, defs));
+    el("rect", { x: ML, y: T2 - 6, width: PW, height: B2 - T2 + 6 }, el("clipPath", { id: "relaxClipStat" }, defs));
+    var gTraj = el("g", { "clip-path": "url(#relaxClipTraj)" }, svg);
+    var gStat = el("g", { "clip-path": "url(#relaxClipStat)" }, svg);
+    var trajI = [], trajK = [], q;
+    for (q = 0; q < SHOW; q++) trajI.push(el("path", { class: "curve ref thin" }, gTraj));
+    for (q = 0; q < SHOW; q++) trajK.push(el("path", { class: "curve acc thin" }, gTraj));
     var pF = el("path", { class: "curve ink" }, gStat);
-    var pFab = el("path", { class: "curve ink dash" }, gStat);
-    var pFba = el("path", { class: "curve acc" }, gStat);
-    el("text", { class: "plabel", x: px(1), y: pyf(0.86) }, svg).textContent = "A";
-    el("text", { class: "plabel", x: px(1), y: pyf(0.14) + 10 }, svg).textContent = "B";
+    var pFik = el("path", { class: "curve ink dash" }, gStat);
+    var pFki = el("path", { class: "curve acc" }, gStat);
+    el("text", { class: "plabel", x: px(1), y: pyf(0.86) }, svg).textContent = "i";
+    el("text", { class: "plabel", x: px(1), y: pyf(0.14) + 10 }, svg).textContent = "k";
 
     function reseed() {
-      seedA = new Float64Array(NL); seedB = new Float64Array(NL);
+      seedI = new Float64Array(NL); seedK = new Float64Array(NL);
       for (var m = 0; m < NL; m++) {
-        seedA[m] = clamp01(0.8 + 0.06 * randn());
-        seedB[m] = clamp01(0.2 + 0.06 * randn());
+        seedI[m] = clamp01(0.8 + 0.06 * randn());
+        seedK[m] = clamp01(0.2 + 0.06 * randn());
       }
     }
-    var F = [], Fab = [], Fba = [];
+    var F = [], Fik = [], Fki = [];
 
     function run() {
-      var a = new Float64Array(seedA), b = new Float64Array(seedB), m, t;
-      var histA = [new Float64Array(a)], histB = [new Float64Array(b)];
+      var a = new Float64Array(seedI), b = new Float64Array(seedK), m, t;
+      var histI = [new Float64Array(a)], histK = [new Float64Array(b)];
       for (t = 0; t < TT; t++) {
         var na = new Float64Array(NL), nb = new Float64Array(NL);
         for (m = 0; m < NL; m++) {
-          var ma = (1 - mAB) * a[m] + mAB * b[m];
-          var mb = (1 - mBA) * b[m] + mBA * a[m];
+          var ma = (1 - mIK) * a[m] + mIK * b[m];
+          var mb = (1 - mKI) * b[m] + mKI * a[m];
           na[m] = clamp01(ma + Math.sqrt(ma * (1 - ma) / NE) * randn());
           nb[m] = clamp01(mb + Math.sqrt(mb * (1 - mb) / NE) * randn());
         }
         a = na; b = nb;
-        histA.push(new Float64Array(a)); histB.push(new Float64Array(b));
+        histI.push(new Float64Array(a)); histK.push(new Float64Array(b));
       }
-      F = []; Fab = []; Fba = [];
+      F = []; Fik = []; Fki = [];
       for (t = 0; t <= TT; t++) {
         var s = 0;
-        for (m = 0; m < NL; m++) { var d = histA[t][m] - histB[t][m]; s += d * d; }
+        for (m = 0; m < NL; m++) { var d = histI[t][m] - histK[t][m]; s += d * d; }
         F.push(s / NL);
       }
       for (t = 0; t + LAG <= TT; t++) {
         var s1 = 0, s2 = 0;
         for (m = 0; m < NL; m++) {
-          var d1 = histA[t + LAG][m] - histB[t][m];
-          var d2 = histB[t + LAG][m] - histA[t][m];
+          var d1 = histI[t + LAG][m] - histK[t][m];
+          var d2 = histK[t + LAG][m] - histI[t][m];
           s1 += d1 * d1; s2 += d2 * d2;
         }
-        Fab.push(s1 / NL); Fba.push(s2 / NL);
+        Fik.push(s1 / NL); Fki.push(s2 / NL);
       }
-      return { A: histA, B: histB };
+      return { i: histI, k: histK };
     }
 
     function pathFrom(vals, ymap) {
@@ -171,34 +171,34 @@
         if (!F.length) return "";
         var t = Math.round(x), tl = Math.min(t, TT - LAG);
         return "t " + t + " · F " + F[t].toFixed(3) +
-          " · F′AB " + Fab[tl].toFixed(3) + " · F′BA " + Fba[tl].toFixed(3);
+          " · F′ik " + Fik[tl].toFixed(3) + " · F′ki " + Fki[tl].toFixed(3);
       }
     });
 
     function draw() {
-      var h = run(), k;
-      for (k = 0; k < SHOW; k++) {
-        trajA[k].setAttribute("d", pathFrom(seriesOf(h.A, k), pyf));
-        trajB[k].setAttribute("d", pathFrom(seriesOf(h.B, k), pyf));
+      var h = run(), q;
+      for (q = 0; q < SHOW; q++) {
+        trajI[q].setAttribute("d", pathFrom(seriesOf(h.i, q), pyf));
+        trajK[q].setAttribute("d", pathFrom(seriesOf(h.k, q), pyf));
       }
       pF.setAttribute("d", pathFrom(F, pyF));
-      pFab.setAttribute("d", pathFrom(Fab, pyF));
-      pFba.setAttribute("d", pathFrom(Fba, pyF));
+      pFik.setAttribute("d", pathFrom(Fik, pyF));
+      pFki.setAttribute("d", pathFrom(Fki, pyF));
       cross.refresh();
     }
 
-    var elAB = document.getElementById("relaxAB"), vAB = document.getElementById("relaxABV");
-    var elBA = document.getElementById("relaxBA"), vBA = document.getElementById("relaxBAV");
-    elAB.addEventListener("input", function () {
-      mAB = +elAB.value; vAB.textContent = mAB.toFixed(3); draw();
+    var elIK = document.getElementById("relaxIK"), vIK = document.getElementById("relaxIKV");
+    var elKI = document.getElementById("relaxKI"), vKI = document.getElementById("relaxKIV");
+    elIK.addEventListener("input", function () {
+      mIK = +elIK.value; vIK.textContent = mIK.toFixed(3); draw();
     });
-    elBA.addEventListener("input", function () {
-      mBA = +elBA.value; vBA.textContent = mBA.toFixed(3); draw();
+    elKI.addEventListener("input", function () {
+      mKI = +elKI.value; vKI.textContent = mKI.toFixed(3); draw();
     });
     document.getElementById("relaxResample").addEventListener("click", function () {
       reseed(); draw();
     });
-    vAB.textContent = mAB.toFixed(3); vBA.textContent = mBA.toFixed(3);
+    vIK.textContent = mIK.toFixed(3); vKI.textContent = mKI.toFixed(3);
     reseed(); draw();
   })();
 })();

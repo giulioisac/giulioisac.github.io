@@ -55,7 +55,7 @@ The \(F_2\) statistic{{cite: patterson2012}} is the simplest of them: the square
 
 Write \(F_{ik}=\langle (X_i-X_k)^2\rangle\) for that distance and \(F'_{ik}=\langle (X'_i-X_k)^2\rangle\) for its lagged version, where the prime denotes time \(t+\Delta t\) and the brackets are the average over sites. The lag is the addition here, and it is what tells a donor from a recipient.
 
-Figure 2 runs both statistics in the browser for two demes. The top panel is the relaxation of the model itself, neutral frequencies in \(A\) and \(B\) pulled together by migration, and the bottom panel is the distance between them with its two lagged versions, \(F'_{AB}\) and \(F'_{BA}\). Symmetric migration pulls all three curves down together. Set the sliders so that flow runs in one direction only and \(F'_{AB}\) and \(F'_{BA}\) separate, because only the receiving population has moved toward where the donor used to be.
+Figure 2 runs both statistics in the browser for two demes, \(i\) and \(k\), the two sliders being the only off-diagonal entries \(A\) has when there are two of them. The top panel is the relaxation of the model itself, neutral frequencies pulled together by migration, and the bottom panel is the distance between them with its two lagged versions, \(F'_{ik}\) and \(F'_{ki}\). Symmetric migration pulls all three curves down together. Set the sliders so that flow runs in one direction only and the two separate, because only the receiving population has moved toward where the donor used to be.
 
 {{figure: gene-flow-figRelax}}
 
