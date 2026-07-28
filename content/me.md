@@ -38,6 +38,10 @@ with \(E^\theta(x)=\sum_{f}\theta_f g_f(x)\) where the function \(g_f\) defines 
 
 with \(\mathbb{E}_\mathcal{G}[\cdot]\) the empirical average with respect to a set \(\mathcal{G}\) of generated samples from \(P_{\rm 0}\). Intuitively, when \(P_{\rm 0}(x)\) is closer to \(P(x)\), the empirical average for \(Z^\theta\) converges faster and the inference is more stable.
 
+Figure 1 (top) shows the tilt at work: a broad reference \(P_{\rm 0}\) is reweighted by the Boltzmann factor \(e^{-E(x)}\) into the distribution \(P\) that matches the constrained moments of the data. The bottom panel belongs to the next section, and we come back to it once the classifier has been introduced.
+
+{{figure: me-figClf}}
+
 ## Connection to Logistic Regression
 
 Parameter inference of \(E^\theta(x)\) is commonly difficult because the estimation of \(Z^\theta\) is computationally intensive. Luckily, we can get around this problem via optimization of an alternative objective function, which shares the same maximum: the [binary cross entropy loss](https://en.wikipedia.org/wiki/Logistic_regression).
@@ -50,11 +54,7 @@ if we parametrize the classifier \(d=d^\theta\), we can minimize the binary cros
 
 \[ S(\theta)=-\mathbb{E}_\mathcal{D}[\log d^\theta]-\mathbb{E}_\mathcal{G}[\log (1-d^\theta)] \]
 
-and recover the density ratio using the energy representation of \(d^\theta\). Note that \(Z^\theta\) never needs to be computed during training: it enters the logit of \(d^\theta\) only as an additive constant \(-\log Z^\theta\), which can be learned as one extra parameter, the intercept of the classifier, together with \(\theta\) (this is exactly how the demo in Figure 2 treats it). Logistic regression (classification) is the workhorse of supervised learning. It finds here an untraditional application to an unsupervised problem. It is also the seed of much of modern contrastive learning: the discriminator of a GAN estimates exactly this \(d(x)\), and negative-sampling objectives such as word2vec's and InfoNCE descend directly from the NCE loss.
-
-Figure 1 puts both halves of the argument in one picture. A broad reference \(P_{\rm 0}\) is tilted by the Boltzmann factor \(e^{-E(x)}\) into the distribution \(P\) that matches the constrained moments of the data (top). The optimal classifier between the two crosses \(d=\tfrac{1}{2}\) exactly where the densities intersect, and its logit is the log density ratio \(-E(x)-\log Z\) (bottom): reading the classifier off recovers the energy.
-
-{{figure: me-figClf}}
+and recover the density ratio using the energy representation of \(d^\theta\). This is the bottom panel of Figure 1: the optimal classifier crosses \(d=\tfrac{1}{2}\) exactly where the two densities intersect, and its logit is the log density ratio \(-E(x)-\log Z\), so reading the classifier off recovers the energy. Note that \(Z^\theta\) never needs to be computed during training: it enters the logit of \(d^\theta\) only as an additive constant \(-\log Z^\theta\), which can be learned as one extra parameter, the intercept of the classifier, together with \(\theta\) (this is exactly how the demo in Figure 2 treats it). Logistic regression (classification) is the workhorse of supervised learning. It finds here an untraditional application to an unsupervised problem. It is also the seed of much of modern contrastive learning: the discriminator of a GAN estimates exactly this \(d(x)\), and negative-sampling objectives such as word2vec's and InfoNCE descend directly from the NCE loss.
 
 Figure 2 runs the whole scheme in the browser. Samples are drawn from an unknown bimodal \(P(x)\) and from a Gaussian noise distribution \(P_{\rm 0}(x)\); a logistic classifier over a set of basis functions is fitted by gradient descent, and the density it implies, \(e^{-E^\theta(x)}P_{\rm 0}(x)/Z^\theta\), is drawn as it converges. Move the noise distribution away from the data and watch the effective sample size behind the importance-sampling estimate of \(Z^\theta\) collapse: the practical face of the remark above that inference is more stable when \(P_{\rm 0}\) is close to \(P\).
 
