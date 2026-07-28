@@ -4,13 +4,12 @@
     <span class="fig-title">State-space model: hidden frequencies, noisy observations</span>
   </div>
   <div class="fig-body">
-    <svg viewBox="0 0 704 176" role="img" aria-label="State-space model diagram with two rows. Top row: three open circles labeled X at times t minus 1, t, and t plus 1, each holding the vector of true frequencies across regions, connected left to right by rightward arrows. Every transition arrow carries the same label, migration plus drift. Bottom row: three shaded circles labeled Y at the same times, each connected from the hidden state above by a downward arrow labeled sampling. Ellipses on both sides extend the chain in both directions. The formulas are given in the caption below.">
+    <svg viewBox="0 0 704 176" role="img" aria-label="State-space model diagram with two rows. Top row: three open circles labeled X at times t minus 1, t, and t plus 1, each holding the vector of true frequencies across regions, connected left to right by rightward arrows that are labeled migration plus drift. Bottom row: three shaded circles labeled Y at the same times, each connected from the hidden state above by a downward arrow labeled sampling. Ellipses on both sides extend the chain in both directions. The formulas are given in the caption below.">
     <g transform="translate(0,-22)">
 
-      <!-- the same label on every transition arrow: each step is migration
-           by A plus drift, so the two arrows read alike -->
-      <text class="pcap" text-anchor="middle" x="256" y="62">MIGRATION + DRIFT</text>
-      <text class="pcap" text-anchor="middle" x="448" y="62">MIGRATION + DRIFT</text>
+      <!-- every transition is the same step, labeled once on the right arrow
+           to sit above the sampling label -->
+      <text class="pcap" text-anchor="middle" x="448" y="54">MIGRATION + DRIFT</text>
 
       <!-- ··· indicators -->
       <text class="anno" text-anchor="middle" x="80" y="76">&#183;&#183;&#183;</text>
@@ -67,5 +66,5 @@
       sampled frequencies Y(t), observed
     </span>
   </div>
-  <div class="fig-note">Standard graphical model notation: open nodes are hidden, shaded nodes are observed. The hidden state X(t) is the whole vector of true frequencies, one per region. Every transition is the one step of Eq. 1, migration by A plus drift &#951;, which is why each arrow reads alike; A is what couples the regions and it is what we are after. The drift &#951; has variance x(1&#8722;x)/N<sub>e</sub> per step, and observing the frequency in S sequences adds a further c&#160;x(1&#8722;x)/S, with c a per-region overdispersion. With Gaussian approximations in both terms the model becomes a Kalman filter, and its analytic likelihood makes parameter estimation cheap.</div>
+  <div class="fig-note">Standard graphical model notation: open nodes are hidden, shaded nodes are observed. The hidden state X(t) is the whole vector of true frequencies, one per region. Every transition is the same step of Eq. 1, migration by A plus drift &#951;, labeled once on the diagram; A is what couples the regions and it is what we are after. The drift &#951; has variance x(1&#8722;x)/N<sub>e</sub> per step, and observing the frequency in S sequences adds a further c&#160;x(1&#8722;x)/S, with c a per-region overdispersion. With Gaussian approximations in both terms the model becomes a Kalman filter, and its analytic likelihood makes parameter estimation cheap.</div>
 </figure>
