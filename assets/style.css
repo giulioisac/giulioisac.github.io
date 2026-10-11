@@ -5,8 +5,8 @@
 --------------------------------------------------------------------------- */
 
 :root {
-  --bg:      #fafafa;
-  --panel:   #ffffff;
+  --bg:      #fdfcfc;
+  --panel:   #f8f7f7;
   --ink:     #1a1a1a;
   --sub:     #6e6e6e;
   --rule:    #1a1a1a;   /* structural black lines */
@@ -19,8 +19,8 @@
   --pad: 28px;
 }
 :root[data-theme="dark"] {
-  --bg:     #0a0a0a;
-  --panel:  #141414;
+  --bg:     #131010;
+  --panel:  #1b1818;
   --ink:    #eeeeee;
   --sub:    #808080;
   --rule:   #3c3c3c;
@@ -29,7 +29,7 @@
   --link:   #ff6060;
 }
 /* figure palette: accent carries the data/model series, gray the reference.
-   Dark accent is a darker step of the brand orange, validated against #141414. */
+   Dark accent is a darker step of the brand orange, validated against #1b1818. */
 :root {
   --fig-accent: #e8000d;
   --fig-ref:    #6e6e6e;
