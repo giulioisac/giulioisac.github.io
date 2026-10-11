@@ -1,16 +1,16 @@
 /* ---------------------------------------------------------------------------
    Giulio Isacchini — personal site
    Swiss / technical system: visible grid, Inter + monospace metadata,
-   monochrome with a single signal accent. Sharp corners, hairline rules.
+   monochrome (opencode grey-scale) with a single signal accent. Sharp corners, hairline rules.
 --------------------------------------------------------------------------- */
 
 :root {
-  --bg:      #f3f3f1;
+  --bg:      #fafafa;
   --panel:   #ffffff;
-  --ink:     #111111;
-  --sub:     #6b6b6b;
-  --rule:    #111111;   /* structural black lines */
-  --hair:    #d6d6d3;   /* dashed dividers */
+  --ink:     #1a1a1a;
+  --sub:     #6e6e6e;
+  --rule:    #1a1a1a;   /* structural black lines */
+  --hair:    #d4d4d4;   /* dashed dividers */
   --accent:  #e8000d;   /* signal red — numbers, kickers, marks */
   --link:    #b50009;   /* readable link text on light */
   --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -19,24 +19,24 @@
   --pad: 28px;
 }
 :root[data-theme="dark"] {
-  --bg:     #0d0d0d;
-  --panel:  #161616;
-  --ink:    #ededed;
-  --sub:    #8f8f8f;
-  --rule:   #3a3a3a;
-  --hair:   #272727;
+  --bg:     #0a0a0a;
+  --panel:  #141414;
+  --ink:    #eeeeee;
+  --sub:    #808080;
+  --rule:   #3c3c3c;
+  --hair:   #282828;
   --accent: #ff2d38;
   --link:   #ff6060;
 }
 /* figure palette: accent carries the data/model series, gray the reference.
-   Dark accent is a darker step of the brand orange, validated against #161616. */
+   Dark accent is a darker step of the brand orange, validated against #141414. */
 :root {
   --fig-accent: #e8000d;
-  --fig-ref:    #6b6b6b;
+  --fig-ref:    #6e6e6e;
 }
 :root[data-theme="dark"] {
   --fig-accent: #ff2d38;
-  --fig-ref:    #8f8f8f;
+  --fig-ref:    #808080;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
