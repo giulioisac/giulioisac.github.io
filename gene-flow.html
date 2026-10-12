@@ -57,11 +57,11 @@
       \[ X_i(t+\Delta t) - X_i(t) = \sum_{j=1}^n A_{ij}\,\bigl[X_j(t) - X_i(t)\bigr] + \eta_i \]
       <p>where the bracket shows that \(j\) influences \(i\) only when the two frequencies differ, and that a larger \(A_{ij}\) makes \(X_i\) converge on \(X_j\) faster. Migration is a spring and drift is the noise that keeps it from ever settling.</p>
 
-      <h2>Two Impossible Datasets</h2>
+      <h2>Time Points Versus Loci</h2>
       <p>The model is the easy part. What separates one application from the next is which statistic of the data survives the noise, and the two datasets we are comparing fail in opposite directions.</p>
       <p>SARS-CoV-2 surveillance is dense in time and thin in loci. England was sequenced weekly across nine regions, so \(\Delta t\) is one week and there are dozens of consecutive time points, but a 30-kilobase genome under a strong clonal background offers only a few tens of approximately independent segregating alleles. Ancient DNA is the mirror image. The Allen Ancient DNA Resource<sup class="cite"><a href="#ref-mallick2024">3</a></sup> genotypes individuals at up to 1.23 million positions, which is an enormous number of loci, and delivers them as a handful of skeletons per 300-year window, pseudohaploid, with the great majority of positions missing in any one sample and the dates themselves uncertain by decades to centuries.</p>
 
-      <h2>Frequencies We Can Trust</h2>
+      <h2>Frequencies We Can Infer</h2>
       <p>Suppose for a moment that the true frequencies are known. Then the estimator writes itself: minimizing the squared difference between predicted and observed frequencies over all right-stochastic matrices gives</p>
       \[ A^{\rm (LS)} = \operatorname*{arg\,min}_{A} \sum_{i,\,\mu,\,t} \Bigl[ X^\mu_i(t+\Delta t) - \sum_j A_{ij} X^\mu_j(t) \Bigr]^2 \]
       <p>where \(\mu\) labels the independent loci and the minimization runs subject to \(A_{ij}\ge 0\) and \(\sum_j A_{ij}=1\). Summing over a window of time points regularizes the fit and sets the resolution at which \(A\) is allowed to vary. This convex problem is the target in both applications, and the rest of this section and the next are the two ways of reaching it when the frequencies cannot be taken at face value.</p>

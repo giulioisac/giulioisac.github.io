@@ -31,13 +31,13 @@ If we subtract \(X_i(t)\) from both sides, the mechanism is in plain view:
 
 where the bracket shows that \(j\) influences \(i\) only when the two frequencies differ, and that a larger \(A_{ij}\) makes \(X_i\) converge on \(X_j\) faster. Migration is a spring and drift is the noise that keeps it from ever settling.
 
-## Two Impossible Datasets
+## Time Points Versus Loci
 
 The model is the easy part. What separates one application from the next is which statistic of the data survives the noise, and the two datasets we are comparing fail in opposite directions.
 
 SARS-CoV-2 surveillance is dense in time and thin in loci. England was sequenced weekly across nine regions, so \(\Delta t\) is one week and there are dozens of consecutive time points, but a 30-kilobase genome under a strong clonal background offers only a few tens of approximately independent segregating alleles. Ancient DNA is the mirror image. The Allen Ancient DNA Resource{{cite: mallick2024}} genotypes individuals at up to 1.23 million positions, which is an enormous number of loci, and delivers them as a handful of skeletons per 300-year window, pseudohaploid, with the great majority of positions missing in any one sample and the dates themselves uncertain by decades to centuries.
 
-## Frequencies We Can Trust
+## Frequencies We Can Infer
 
 Suppose for a moment that the true frequencies are known. Then the estimator writes itself: minimizing the squared difference between predicted and observed frequencies over all right-stochastic matrices gives
 
