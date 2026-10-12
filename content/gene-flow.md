@@ -11,6 +11,8 @@ script: assets/gene-flow.js
 
 During the Delta wave, genomic surveillance in England was producing tens of thousands of SARS-CoV-2 genomes a week. Follow a common mutation in two regions, tracking the fraction of genomes in each that carry it: while travel between them is suppressed the two frequencies tend to wander apart, and once travel resumes they converge again. Nobody recorded the journeys that caused the convergence, yet their imprint was left for us to read.
 
+{{figure: gene-flow-figSketch}}
+
 Whether that imprint is there at all depends on which mutations we follow, and the ones tracked here are the ones that do not matter. A neutral mutation is neither favored nor purged, so on average the only thing that moves its frequency in a region is the arrival and departure of the individuals carrying it. Left alone it still wanders (that is genetic drift, and it is the noise the rest of this note has to survive), but its expected change is zero, and an estimator can be built on an expectation. Migration is the only thing left pushing in a direction, and that is what makes a neutral mutation readable.
 
 A selected mutation is different. It can rise inside a closed population, and a rise produced from within looks the same as one produced by arrivals.

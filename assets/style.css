@@ -210,6 +210,7 @@ a { color: var(--link); text-decoration: none; }
 
 /* ---------------------------------------------------------- figures */
 .fig { border: 1px solid var(--rule); margin: 1.8em auto; max-width: 88%; }
+.fig.bare { border: 0; }
 .fig-head {
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
   padding: 10px 14px; border-bottom: 1px dashed var(--hair);
