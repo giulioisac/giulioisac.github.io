@@ -1,4 +1,4 @@
-"""Build the static site: content/*.md -> *.html, and refresh the index cards.
+"""Build the static site: content/*.md -> *.html, the index cards and sitemap.xml.
 
 Prose lives in `content/<slug>.md` with YAML front matter. Hand-tuned figures
 live in `figures/<name>.html` and are pulled in with a `{{figure: <name>}}`
@@ -24,6 +24,9 @@ ROOT = Path(__file__).resolve().parent
 CONTENT, FIGURES, TEMPLATES = ROOT / "content", ROOT / "figures", ROOT / "templates"
 STYLESHEET = ROOT / "assets" / "style.css"
 INDEX = ROOT / "index.html"
+SITEMAP = ROOT / "sitemap.xml"
+SITE_URL = "https://giulioisac.github.io"
+DEFAULT_IMAGE = "IMG_5210-circle.001.png"
 
 PROSE_INDENT = " " * 6
 FIGURE_RE = re.compile(r"<p>\{\{figure:\s*([A-Za-z0-9_-]+)\}\}</p>")
@@ -187,6 +190,8 @@ def render_post(post: dict[str, Any], env: Environment, version: str) -> str:
             tag=post["tag"],
             math=post.get("math", False),
             unlisted=post.get("unlisted", False),
+            url=f"{SITE_URL}/{post['slug']}.html",
+            image=f"{SITE_URL}/{post.get('image', DEFAULT_IMAGE)}",
             script=post.get("script"),
             version=version,
             content=render_body(post["body"]),
@@ -216,6 +221,18 @@ def render_index(posts: list[dict[str, Any]], version: str) -> str:
     return re.sub(r'(assets/style\.css\?v=)[^"]*', rf"\g<1>{version}", text)
 
 
+def render_sitemap(listed: list[dict[str, Any]]) -> str:
+    """The home page and every listed post; unlisted drafts stay out."""
+    urls = [f"{SITE_URL}/"] + [f"{SITE_URL}/{p['slug']}.html" for p in listed]
+    entries = "\n".join(f"  <url><loc>{url}</loc></url>" for url in urls)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{entries}\n"
+        "</urlset>\n"
+    )
+
+
 @app.command()
 def build(
     check: bool = typer.Option(
@@ -232,6 +249,7 @@ def build(
     outputs = {ROOT / f"{p['slug']}.html": render_post(p, env, version) for p in posts}
     listed = [p for p in posts if not p.get("unlisted", False)]
     outputs[INDEX] = render_index(listed, version)
+    outputs[SITEMAP] = render_sitemap(listed)
 
     stale = [
         path

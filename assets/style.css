@@ -211,6 +211,10 @@ a { color: var(--link); text-decoration: none; }
 /* ---------------------------------------------------------- figures */
 .fig { border: 1px solid var(--rule); margin: 1.8em auto; max-width: 88%; }
 .fig.bare { border: 0; }
+.fig-body.split { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px; }
+.fig-body.split svg { min-width: 0; width: auto; }
+.fig-body.split .sk-map { flex: 176 1 150px; max-width: 190px; }
+.fig-body.split .sk-plot { flex: 514 1 320px; }
 .fig-head {
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
   padding: 10px 14px; border-bottom: 1px dashed var(--hair);
