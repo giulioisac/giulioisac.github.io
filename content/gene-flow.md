@@ -65,7 +65,7 @@ Figure 2 runs both statistics in the browser for two demes, \(i\) and \(k\), whe
 
 {{figure: gene-flow-figRelax}}
 
-Squaring the lagged difference and averaging over loci turns the relaxation form of the model into a relation between distances alone, which we state without the derivation{{cite: isacchini2026}}:
+Squaring the lagged difference and averaging over loci turns the relaxation form of the model into a relation between distances alone{{cite: isacchini2026}}:
 
 \[ F'_{ik} - F'_{ii} = \sum_{j=1}^n A_{ij}\,\bigl(F_{jk} - F_{ji}\bigr) \]
 
