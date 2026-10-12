@@ -15,8 +15,6 @@ During the Delta wave, genomic surveillance in England was producing tens of tho
 
 Whether that imprint is there at all depends on which mutations we follow, and the ones tracked here are the ones that do not matter. A neutral mutation is neither favored nor purged, so on average the only thing that moves its frequency in a region is the arrival and departure of the individuals carrying it. Left alone it still wanders (that is genetic drift, and it is the noise the rest of this note has to survive), but its expected change is zero, and an estimator can be built on an expectation. Migration is the only thing left pushing in a direction, and that is what makes a neutral mutation readable.
 
-A selected mutation is different. It can rise inside a closed population, and a rise produced from within looks the same as one produced by arrivals.
-
 What follows is the single linear equation that turns the convergence of two such frequencies into an estimate of who moved where, and its application to two datasets with almost nothing in common beyond neutrality: weekly SARS-CoV-2 genomes across regions, and ancient human genomes sampled centuries apart.
 
 ## A Metapopulation of Neutral Alleles
