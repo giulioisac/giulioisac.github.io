@@ -5,7 +5,6 @@ tag: Notes / Population Genetics
 blurb: One linear model of neutral allele frequencies reads transmission networks from SARS-CoV-2 and ancient migrations from archaeogenetic data.
 order: 3
 math: true
-unlisted: true
 script: assets/gene-flow.js
 ---
 
@@ -75,7 +74,7 @@ From there \(A\) is fit as it was before, by least squares on the residuals of t
 
 ## Wherever Something Is Sampled Twice
 
-The two analyses are one model and two estimators, run at opposite ends of a single axis. SARS-CoV-2 gives many time points and few independent alleles, so the noise has to be modeled, and a Kalman filter pulls the true frequencies out from under drift and sampling. Ancient DNA gives a million loci and almost no time points, so the noise has to be cancelled, and the difference of two lagged distances does it without a noise model at all. What comes back is the same object either way. In England the networks track geography but carry long-range links stronger than mobility data predicts, and they change between variant waves{{cite: okada2025}}. In Europe the Steppe ancestry that reaches Britain in the third millennium arrives by way of Central Europe rather than directly: a route with a direction and a date, where a static ancestry proportion shows only a component{{cite: isacchini2026}}.
+The two analyses are one model and two estimators, run at opposite ends of a single axis. SARS-CoV-2 gives many time points and few independent alleles, so the noise has to be modeled, and a Kalman filter pulls the true frequencies out from under drift and sampling. Ancient DNA gives a million loci and almost no time points, so the noise has to be cancelled, and the difference of two lagged distances does it without a noise model at all. What comes back is the same object either way. In England the networks track geography but carry long-range links stronger than mobility data predicts, and they change between variant waves{{cite: okada2025}}. In Europe the Steppe ancestry that reaches Britain in the third millennium arrives by way of Central Europe rather than directly: a route with a direction and a date{{cite: isacchini2026}}.
 
 Nothing in the derivation knows that the populations are places. It asks only for subpopulations, alleles nobody is selecting on, and samples at more than one time. Communities split by age or socioeconomic status rather than by geography would serve as well{{cite: okada2025}}, as would any pathogen under routine surveillance, or the microbial populations that metagenomics reads repeatedly from the same hosts and sites, where dispersal between them does exactly what migration does here.
 
